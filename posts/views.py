@@ -17,3 +17,15 @@ def posts_detail_view(request, id): # 세부 글 조회
         'post': post,
     }
     return render(request, 'posts/posts_detail.html', context)
+
+
+def posts_like_view(request, id): #찜
+    post = get_object_or_404(Post, id=id)
+    if request.method == 'POST':
+        if post.like.filter(id=request.user.id).exists(): # 찜 이미 누른 상태일 때
+            post.like.remove(request.user) # 찜 취소
+            post.save()
+        else: # 찜  누르지 않은 상태일 때
+            post.like.add(request.user) # 찜 등록
+            post.save()
+        return redirect('posts:post-list')
