@@ -1,18 +1,36 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>Post 상세 화면</h1>
-        <div>
-            {{ post.placename }}<br/>
-            {{ post.region }}<br/>
-            {{ post.tag }}<br/>
-            {{ post.content }}<br/>
-            {{ post.tip }}<br/>
-        </div>
-        <div > <img alt="" src="{{ post.image.url }}"></div>
-</body>
-</html>
+<!--<!DOCTYPE html>-->
+<!--<html lang="ko">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>Post 상세 화면</h1>-->
+<!--        <div>-->
+<!--            {{ post.placename }}<br/>-->
+<!--            {{ post.region }}<br/>-->
+<!--            {{ post.tag }}<br/>-->
+<!--            {{ post.content }}<br/>-->
+<!--            {{ post.tip }}<br/>-->
+<!--        </div>-->
+<!--        <div > <img alt="" src="{{ post.image.url }}"></div>-->
+<!--</body>-->
+<!--</html>-->
+<!-- post_detail.html -->
+
+<!-- Post 정보 표시 -->
+<h1>{{ post.title }}</h1>
+<p>{{ post.content }}</p>
+<img src="{{ post.image.url }}" alt="Post Image">
+
+<!-- Review 정보 표시 -->
+<h2>Reviews</h2>
+<ul>
+  {% for review in post.review_set.all %}
+    <li>
+      <p>{{ review.reviewText }}</p>
+    </li>
+  {% empty %}
+    <li>No reviews yet.</li>
+  {% endfor %}
+</ul>
