@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib import auth
 from .forms import UserForm
 from django.contrib.auth import authenticate, login
-
+from posts.models import Post
 def login_view(request):
 
     return
@@ -29,4 +29,16 @@ def main2(request): # home 페이지
 def logout_view(request):
     return
 
-
+# def like_list_view(request, pk):
+#     if request.method == 'GET':
+#         likeList = posts.models.Post.objects.filter(like=pk)
+#         context = {
+#             'likeList': likeList,
+#         }
+#         return render(request, 'user/saveList.html', context)
+def like_list_view(request, id):
+    likeList = Post.objects.filter(like=request.user.id)
+    context = {
+        'likeList': likeList,
+    }
+    return render(request, 'user/saveList.html', context)
