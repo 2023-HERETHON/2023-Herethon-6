@@ -8,4 +8,3 @@ urlpatterns = [
     path("<int:id>/", posts_detail_view, name='post-detail'),
     path('<int:id>/like/', posts_like_view, name='post-like'),
 ]
-
