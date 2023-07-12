@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/curating.css">
+    <title>큐레이팅 페이지</title>
+</head>
+<body>
+    <div class="top-bar">
+        <img src="../images/heart.png" class="heart">
+        <img src="../images/person.png" class="mypage">
+    </div>
+    <div class="curate">
+        <div>
+            <h3>OO님과 부모님을 위해 골랐어요.</h3>
+            <button type="button">식당</button>
+            <button type="button">즐길거리</button>
+            <button type="button">예약가능</button>
+        </div>
+        <div class="list">
+            <div>
+                <img src="../images/Frame10.png" onclick="detail(1)">
+                <img src="../images/heart.png" class="heart">
+            </div>
+            <div>
+                <img src="../images/Frame11.png" onclick="detail(2)">
+                <img src="../images/heart.png" class="heart">
+            </div>
+            <div>
+                <img src="../images/Frame12.png" onclick="detail(3)">
+                <img src="../images/heart.png" class="heart">
+            </div>
+            <div>
+                <img src="../images/Frame13.png" onclick="detail(4)">
+                <img src="../images/heart.png" class="heart">
+            </div>
+            <div>
+                <img src="../images/Frame14.png" onclick="detail(5)">
+                <img src="../images/heart.png" class="heart">
+            </div>
+            <div>
+                <img src="../images/Frame15.png" onclick="detail(6)">
+                <img src="../images/heart.png" class="heart">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function detail(num) {
+            if(num==1) window.open("./detail.html");
+            else if(num==2) window.open("./detail.html");
+            //이거 상세페이지를 각각 다 만들어야하는 건가요?!
+        }
+    </script>
+</body>
+</html>

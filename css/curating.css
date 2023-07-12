@@ -1,0 +1,23 @@
+.top-bar {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 18.5px;
+    padding-bottom: 18px;
+    margin-top: 50px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.top-bar img {
+    margin-right: 4%;
+}
+
+.heart {
+    width: 27px;
+    height: 27px;
+}
+
+.mypage {
+    width: 21px;
+    height: 23px
+}
