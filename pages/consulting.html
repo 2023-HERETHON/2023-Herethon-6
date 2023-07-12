@@ -57,11 +57,30 @@
             <button class="bth-1">내 위치 주변으로</button>
         </div>
         <div class="bth-2" onclick="goTo()">
-            <button>효도 코스 확인하기</button>
+            <button>효도 코스 추천받기</button>
         </div>
     </div>
 
     <script>
+        const buttons = document.querySelectorAll('.theme button');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (!button.classList.contains('active')) {
+                    // css 속성 변경
+                    button.style.border = '0.5px solid #A37B59';
+                    button.style.background = '#CEBAA9';
+                    button.style.boxShadow = '0.5px 0.5px 5px 0px #CEBAA9, -0.5px -0.5px 5px 0px #CEBAA9';
+                    button.classList.add('active');
+                } else {
+                    // 원래 속성으로 복원
+                    button.style.border = '0.05px solid rgba(57, 69, 69, 0.30)';
+                    button.style.background = '#FFFFFF';
+                    button.style.boxShadow = '0.5px 0.5px 5px 0px rgba(0, 0, 0, 0.50), -0.5px -0.5px 5px 0px rgba(0, 0, 0, 0.50)';
+                    button.classList.remove('active');
+                }
+            });
+        });
+
         function categoryChange(key) {
             var option_1 = ["구/군 선택"];
             var option_2 = ["구 선택", "강남구", "강동구", "강북구", "강서구", "관악구", "광진구", "구로구", "금천구", "노원구", "도봉구", "동대문구", "동작구", "마포구", "서대문구", "서초구", "성동구", "성북구", "송파구", "양천구", "영등포구", "용산구", "은평구", "종로구", "중구", "중랑구"];
