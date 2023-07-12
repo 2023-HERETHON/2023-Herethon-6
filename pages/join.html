@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입 페이지</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="title">ㅇㅇ님만을 위한 효도 컨설팅,<br />지금 시작해볼까요?</div>
+      <form method="post" id="loginForm">
+        <div id="idText">아이디</div>
+        <input type="text" id="idInput" name="userId" />
+        <div id="pwText">비밀번호</div>
+        <input type="password" id="pwInput" name="userPassword" />
+        <div id="idText">비밀번호 확인</div>
+        <div id="pwCheck">
+          <input type="password" id="pwCheckInput" />
+          <div id="check">확인</div>
+        </div>
+        <div id="name">이름</div>
+        <input type="text" id="nameInput" name="userName" />
+        <div id="phoneNum">휴대전화번호</div>
+        <input
+          type="tel"
+          id="phoneNumInput"
+          name="userPhoneNum"
+          placeholder="010-0000-0000"
+        />
+      </form>
+      <div id="agree">약관동의</div>
+      <label><input type="checkbox" id="agree1" />이용약관에 동의합니다.</label>
+      <div id="viewContent1">내용보기</div>
+      <label
+        ><input type="checkbox" id="agree2" />개인정보 수집 및 이용에
+        동의합니다.</label
+      >
+      <div id="viewContent2">내용보기</div>
+      <button type="submit" id="startBtn">효도 컨설팅 가입하기</button>
+    </div>
+  </body>
+</html>
