@@ -17,43 +17,78 @@
     <div class="curate">
         <div>
             <h3>OO님과 부모님을 위해 골랐어요.</h3>
-            <button type="button">식당</button>
-            <button type="button">즐길거리</button>
-            <button type="button">예약가능</button>
+            <div class="menu">
+                <button type="button" class="btn-1">식당/카페</button>
+                <button type="button" class="btn-2">즐길거리</button>
+            </div>
         </div>
         <div class="list">
             <div>
-                <img src="../images/Frame10.png" onclick="detail(1)">
-                <img src="../images/heart.png" class="heart">
+                <img src="../images/Frame10.png" class="back" onclick="detail(1)">
+                <img src="../images/heart2.png" class="heart" id="heart0">
             </div>
             <div>
-                <img src="../images/Frame11.png" onclick="detail(2)">
-                <img src="../images/heart.png" class="heart">
+                <img src="../images/Frame11.png" class="back" onclick="detail(2)">
+                <img src="../images/heart2.png" class="heart" id="heart1">
             </div>
             <div>
-                <img src="../images/Frame12.png" onclick="detail(3)">
-                <img src="../images/heart.png" class="heart">
+                <img src="../images/Frame12.png" class="back" onclick="detail(3)">
+                <img src="../images/heart2.png" class="heart" id="heart2">
             </div>
             <div>
-                <img src="../images/Frame13.png" onclick="detail(4)">
-                <img src="../images/heart.png" class="heart">
+                <img src="../images/Frame13.png" class="back" onclick="detail(4)">
+                <img src="../images/heart2.png" class="heart" id="heart3">
             </div>
             <div>
-                <img src="../images/Frame14.png" onclick="detail(5)">
-                <img src="../images/heart.png" class="heart">
+                <img src="../images/Frame14.png" class="back" onclick="detail(5)">
+                <img src="../images/heart2.png" class="heart" id="heart4">
             </div>
             <div>
-                <img src="../images/Frame15.png" onclick="detail(6)">
-                <img src="../images/heart.png" class="heart">
+                <img src="../images/Frame15.png" class="back" onclick="detail(6)">
+                <img src="../images/heart2.png" class="heart" id="heart5">
             </div>
+        </div>
+        <!-- 하트 누르면 모달창 -->
+        <div class="modal_background"></div>
+        <div class="modal_wrap">
+            <div class="text">장소를 저장했습니다.</div>
         </div>
     </div>
 
     <script>
         function detail(num) {
             if(num==1) window.open("./detail.html");
-            else if(num==2) window.open("./detail.html");
+            else if(num==2) window.open("./detail2.html");
             //이거 상세페이지를 각각 다 만들어야하는 건가요?!
+        }
+        //하트 클릭 이벤트
+        const modal_wrap = document.querySelector(".modal_wrap");
+        const modal_background = document.querySelector(".modal_background");
+        const heartImages = document.querySelectorAll(".heart");
+        heartImages.forEach((heartImage, index) => {
+            heartImage.addEventListener("click", () => {
+                if (heartImage.src.includes("heart2.png")) {
+                    heartImage.src = "../images/heart3.png";
+                    openModal();
+                } else if (heartImage.src.includes("heart3.png")) {
+                    heartImage.src = "../images/heart2.png";
+                    closeModal();
+                }
+            });
+        });
+        // 모달창 외부 클릭으로 닫기
+        window.addEventListener("click", (e) => {
+            e.target === modal_background ? closeModal() : false;
+        });
+
+        function closeModal() {
+            modal_wrap.classList.remove("show-modal");
+            modal_background.classList.remove("show-modal");
+        }
+
+        function openModal() {
+            modal_wrap.classList.add("show-modal");
+            modal_background.classList.add("show-modal");
         }
     </script>
 </body>
