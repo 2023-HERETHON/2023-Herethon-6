@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인 후 메인 페이지</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="saveList">
+        <img src="/images/heart.png" alt="찜목록" />
+      </div>
+      <div id="myPage">
+        <img src="/images/person.png" alt="마이페이지" />
+        {{ request.user.pk }}
+      </div>
+      <div id="mainImage"></div>
+      <button type="submit" id="loginBtn">효도 컨설팅 시작!</button>
+    </div>
+  </body>
+</html>
