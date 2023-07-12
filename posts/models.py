@@ -1,8 +1,9 @@
+from django.conf import settings
 from django.db import models
 
 # Create your models here.
 class Post(models.Model):
-
+    like = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="userLike")
     placename=models.CharField('장소명', max_length=50, null=False)
     image=models.ImageField('추천 장소 이미지')
     region=models.CharField('구', max_length=20, null=True)
