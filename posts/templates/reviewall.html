@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--리뷰 전체보기 페이지-->
+      <h1>Review List</h1>
+
+          <ul>
+            {% for review in reviews %}
+            <li>
+                <strong>{{ review.user.username }}</strong>
+<!--              <h3>{{ review.post.title }}</h3>-->
+              <p>{{ review.reviewText }}</p>
+             <p>{{ review.created_at | date:'m월 d일' }}</p>
+            </li>
+                {% empty %}
+          </ul>
+    <p>첫 번째 리뷰를 달아주세요!</p>
+  {% endfor %}
+</body>
+</html>
