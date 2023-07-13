@@ -1,23 +1,47 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>로그인 후 메인 페이지</title>
+    <link rel="stylesheet" href="{% static '/css/main2.css'%}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div id="container">
-      <div id="saveList">
-        <img src="/images/heart.png" alt="찜목록" />
+      <div id="logo">
+        <img src="{% static '/images/logo.png'%}" alt="로고" width="50px" ; />
       </div>
-      <div id="myPage">
-        <img src="/images/person.png" alt="마이페이지" />
-        {{ request.user.pk }}
+      <div id="saveList" onclick="goSaveList()">
+        <img
+          src="{% static '/images/heart.png'%}"
+          alt="찜목록"
+          width="22.5px"
+          heigth="19.5px"
+        />
       </div>
-      <div id="mainImage"></div>
-      <form action="{% url 'user:user-consulting' %}" method="POST">
-        {% csrf_token %}
-        <button id="loginBtn" type="submit">효도 컨설팅 시작!</button>
+      <div id="myPage" onclick="goMyPage()">
+        <img
+          src="{% static '/images/person.png'%}"
+          alt="마이페이지"
+          width="20.5px"
+          heigth="22.5px"
+        />
+      </div>
+      <div id="mainImage">
+        <img
+          src="{% static '/images/mainImage.png'%}"
+          alt="메인이미지"
+          width="342px"
+          height="382px"
+        />
+      </div>
+      <form action="{% url 'user:user-consulting' %}" method="POST">{% csrf_token %}
+        <button id="startBtn" type="submit">효도 컨설팅 시작!</button>
       </form>
     </div>
   </body>
