@@ -28,7 +28,9 @@
                 <div id="name" for="nameInput">이메일</div>
                 <input type="text" class="form-control" name="email" id="nameInput" value="{{ form.email.value|default_if_none:'' }}">
             </div>
-            <button type="submit" id="startBtn" class="btn btn-primary">효도 컨설팅 가입하기</button>
+            <div class="form-group">
+                <button type="submit" id="startBtn" class="btn btn-primary">효도 컨설팅 가입하기</button>
+            </div>
         </form>
     </div>
 </body>
