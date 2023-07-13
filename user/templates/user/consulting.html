@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,13 +7,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/consulting.css">
+    <link rel="stylesheet" href="{% static '/css/consulting.css'%}">
     <title>컨설팅 페이지</title>
 </head>
 <body>
     <div class="top-bar">
-        <img src="../images/heart.png" class="heart">
-        <img src="../images/person.png" class="mypage">
+        <img src="{% static '/images/heart.png'%}" class="heart">
+        <img src="{% static '/images/person.png'%}" class="mypage">
     </div>
     <div class="select">
         <div class="keyword">
