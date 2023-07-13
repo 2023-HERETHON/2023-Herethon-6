@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .models import Post
+from .models import Post, Tag, Region, Category
+
 
 # Create your views here.
 def posts_list_view(request): # 전체 글 조회
@@ -29,3 +30,86 @@ def posts_like_view(request, id): #찜
             post.like.add(request.user) # 찜 등록
             post.save()
         return redirect('posts:post-list')
+
+# def home(request):
+#     tags = Tag.objects.all()
+#     regions = Region.objects.all()
+#     return render(request, 'posts/filter.html',{'tags': tags, 'regions': regions})
+
+# def filter_posts(request):
+#     if request.method == 'POST':
+#         tag_ids = request.POST.getlist('tag')
+#         region_id = request.POST.get('region')
+#         selected_tags = Tag.objects.filter(id__in=tag_ids)
+#         selected_region = Region.objects.get(id=region_id)
+#
+#         posts = Post.objects.filter(region=selected_region)
+#         for tag in selected_tags:
+#             posts = posts.filter(tags=tag)
+#
+#         regions = Region.objects.all()
+#         tags = Tag.objects.all()
+#
+#         return render(request, 'posts/filtered_post.html', {'posts': posts, 'regions': regions, 'tags': tags})
+#     regions = Region.objects.all()
+#     tags = Tag.objects.all()
+#     return render(request, 'posts/filter.html', {'regions': regions, 'tags': tags})
+
+def filter_posts(request):
+    if request.method == 'POST':
+        tag_ids = request.POST.getlist('tag')
+        region_id = request.POST.get('region')
+        selected_tags = Tag.objects.filter(id__in=tag_ids)
+        selected_region = Region.objects.get(id=region_id)
+
+        posts = Post.objects.filter(region=selected_region)
+        for tag in selected_tags:
+            posts = posts.filter(tags=tag)
+
+        regions = Region.objects.all()
+        tags = Tag.objects.all()
+        categories = Category.objects.all()
+
+        return render(request, 'posts/filtered_post.html',
+                      {'posts': posts, 'regions': regions, 'tags': tags, 'categories': categories})
+
+    regions = Region.objects.all()
+    tags = Tag.objects.all()
+    categories = Category.objects.all()
+    return render(request, 'posts/filter.html', {'regions': regions, 'tags': tags, 'categories': categories})
+
+
+def filtered_posts(request):
+    category_id = request.GET.get('category')
+    category = Category.objects.get(id=category_id)
+    # posts = Post.objects.filter(tags=category)
+    tags_in_category = Tag.objects.filter(category=category)
+
+    posts = Post.objects.filter(tags__in=tags_in_category)
+
+    regions = Region.objects.all()
+    tags = Tag.objects.all()
+    categories = Category.objects.all()
+
+    return render(request, 'posts/filtered_post.html',
+                  {'posts': posts, 'regions': regions, 'tags': tags, 'categories': categories, 'category': category})
+
+# def filtered_by_category(request):
+#     category_id = request.GET.get('category')
+#     category = Category.objects.get(id=category_id)
+#     posts = Post.objects.filter(tags=category)
+#
+#     categories = Category.objects.all()
+#     return render(request, 'posts/posts_detail.html', {'posts': posts, 'category': category, 'categories': categories})
+
+# def filtered_by_category(request):
+#     category_id = request.GET.get('category')
+#     category = get_object_or_404(Category, id=category_id)
+#     filtered_posts = Post.objects.filter(categories=category)
+#
+#     posts = [post for post in filtered_posts if category in post.categories.all()]
+#
+#     return render(request, 'posts/filtered_post.html', {'posts': posts, 'category': category})
+
+
+

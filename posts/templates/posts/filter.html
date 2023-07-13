@@ -1,0 +1,25 @@
+<form method="POST" action="{% url 'posts:filter_posts' %}">
+  {% csrf_token %}
+
+  <h3>테마 선택:</h3>
+  <ul>
+    {% for tag in tags %}
+    <li>
+      <label>
+        <input type="checkbox" name="tag" value="{{ tag.id }}"> {{ tag.name }}
+      </label>
+    </li>
+    {% endfor %}
+  </ul>
+
+  <h3>지역 선택:</h3>
+  <select name="region">
+    <option value="">지역 선택</option>
+    {% for region in regions %}
+    <option value="{{ region.id }}">{{ region.name }}</option>
+    {% endfor %}
+  </select>
+  <br>
+
+  <button type="submit">맞춤형 효도 코스 확인하기</button>
+</form>
