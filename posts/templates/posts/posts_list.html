@@ -1,3 +1,20 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="ko">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>목록 화면</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>Post 목록 화면</h1>-->
+<!--    {% for post in posts_list %}-->
+<!--    <a href="http://127.0.0.1:8000/posts/{{ post.id }}/">-->
+<!--        <img alt="" src="{{ post.image.url }}">-->
+<!--    </a>-->
+<!--    {% endfor %}-->
+
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -7,10 +24,9 @@
 <body>
     <h1>Post 목록 화면</h1>
     {% for post in posts_list %}
-    <a href="http://127.0.0.1:8000/posts/{{ post.id }}/">
-        <img alt="" src="{{ post.image.url }}">
-    </a>
+        <a href="{% url 'posts:post-detail' id=post.id %}">
+            <img alt="" src="{{ post.image.url }}">
+        </a>
     {% endfor %}
-
 </body>
 </html>
