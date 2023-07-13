@@ -5,21 +5,32 @@ body {
 
 .top-bar {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding-top: 18.5px;
     padding-bottom: 18px;
     margin-top: 50px;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid rgba(32, 40, 33, 0.25);
 }
 
-.top-bar img {
-    margin-right: 4%;
+.logo {
+    width: 47px;
+    height: 24.598px;
+    margin-left: 5%;
 }
+
+.top-bar > div {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* .top-bar > div > img {
+    margin-right: 35%;
+} */
 
 .heart {
     width: 27px;
     height: 27px;
+    padding-right: 10px;
 }
 
 .mypage {
@@ -33,7 +44,7 @@ body {
 }
 
 h3 {
-    margin-top: 55px;
+    margin-top: 40px;
     margin-bottom: 24px;
     font-size: 24px;
     font-weight: normal;
@@ -58,6 +69,7 @@ h3 {
     box-shadow: 0.5px 0.5px 5px 0px rgba(0, 0, 0, 0.50), -0.5px -0.5px 5px 0px rgba(0, 0, 0, 0.50);
     background: #FFFFFF;
     font-size: 18px;
+    font-weight: 600;
 }
 
 .sel {

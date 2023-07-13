@@ -5,6 +5,7 @@ from django.contrib import auth
 from .forms import UserForm
 from django.contrib.auth import authenticate, login
 from posts.models import Post
+from review.models import Review
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
@@ -67,3 +68,10 @@ def like_list_view(request, id): # 마이페이지 찜 목록 보기
         'likeList': likeList,
     }
     return render(request, 'user/saveList.html', context)
+
+def review_list_view(request, id): # 마이페이지 리뷰 목록 보기
+    reviewList = Review.objects.filter(user=request.user.id)
+    context = {
+        'reviewList': reviewList,
+    }
+    return render(request, 'user/myPage.html', context)

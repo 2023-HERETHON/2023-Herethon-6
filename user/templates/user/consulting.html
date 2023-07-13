@@ -12,8 +12,15 @@
 </head>
 <body>
     <div class="top-bar">
-        <img src="{% static '/images/heart.png'%}" class="heart">
-        <img src="{% static '/images/person.png'%}" class="mypage">
+        <img src="{% static '/images/logo1.png' %}" class="logo">
+        <div>
+            <div id="saveList" onclick="location.href='http://127.0.0.1:8000/user/{{request.user.pk}}/like/'">
+                <img src="{% static '/images/heart.png'%}" class="heart">
+            </div>
+            <div id="myPage" onclick="location.href='http://127.0.0.1:8000/user/{{request.user.pk}}/review/'">
+                <img src="{% static '/images/person.png'%}" class="mypage">
+            </div>
+        </div>
     </div>
     <div class="select">
         <div class="keyword">
