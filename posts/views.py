@@ -82,8 +82,8 @@ def filter_posts(request):
 def filtered_posts(request):
     category_id = request.GET.get('category')
     category = Category.objects.get(id=category_id)
-    # posts = Post.objects.filter(tags=category)
-    tags_in_category = Tag.objects.filter(category=category)
+    # posts = Post.objects.filter(category=category)
+    tags_in_category = Tag.objects.filter(tags__category=category)
 
     posts = Post.objects.filter(tags__in=tags_in_category)
 
@@ -94,22 +94,60 @@ def filtered_posts(request):
     return render(request, 'posts/filtered_post.html',
                   {'posts': posts, 'regions': regions, 'tags': tags, 'categories': categories, 'category': category})
 
-# def filtered_by_category(request):
-#     category_id = request.GET.get('category')
-#     category = Category.objects.get(id=category_id)
-#     posts = Post.objects.filter(tags=category)
+# def filter_posts(request):
+#     if request.method == 'POST':
+#         tag_ids = request.POST.getlist('tag')
+#         region_id = request.POST.get('region')
+#         selected_tags = Tag.objects.filter(id__in=tag_ids)
+#         selected_region = Region.objects.get(id=region_id)
 #
+#         posts = Post.objects.filter(region=selected_region)
+#         for tag in selected_tags:
+#             posts = posts.filter(tags=tag)
+#
+#         regions = Region.objects.all()
+#         tags = Tag.objects.all()
+#         categories = Category.objects.all()
+#
+#         return render(request, 'posts/filtered_post.html', {
+#             'posts': posts,
+#             'regions': regions,
+#             'tags': tags,
+#             'categories': categories,
+#             'selected_tags': selected_tags,
+#             'selected_region': selected_region
+#         })
+#
+#     regions = Region.objects.all()
+#     tags = Tag.objects.all()
 #     categories = Category.objects.all()
-#     return render(request, 'posts/posts_detail.html', {'posts': posts, 'category': category, 'categories': categories})
+#     return render(request, 'posts/filter.html', {
+#         'regions': regions,
+#         'tags': tags,
+#         'categories': categories
+#     })
+#
+#
+# def filtered_posts(request, category):
+#     category = get_object_or_404(Category, id=category)
+#     tags_in_category = Tag.objects.filter(category=category)
+#
+#     posts = Post.objects.filter(region=request.GET.get('region'), tags__in=tags_in_category)
+#
+#     regions = Region.objects.all()
+#     tags = Tag.objects.all()
+#     categories = Category.objects.all()
+#
+#     return render(request, 'posts/filtered_post.html', {
+#         'posts': posts,
+#         'regions': regions,
+#         'tags': tags,
+#         'categories': categories,
+#         'category': category
+#     })
 
-# def filtered_by_category(request):
-#     category_id = request.GET.get('category')
-#     category = get_object_or_404(Category, id=category_id)
-#     filtered_posts = Post.objects.filter(categories=category)
-#
-#     posts = [post for post in filtered_posts if category in post.categories.all()]
-#
-#     return render(request, 'posts/filtered_post.html', {'posts': posts, 'category': category})
+
+
 
 
 
