@@ -71,7 +71,9 @@ def like_list_view(request, id): # 마이페이지 찜 목록 보기
 
 def review_list_view(request, id): # 마이페이지 리뷰 목록 보기
     reviewList = Review.objects.filter(user=request.user.id)
+    review = Review.objects.get(id=id)
     context = {
         'reviewList': reviewList,
+        'review': review,
     }
     return render(request, 'user/myPage.html', context)

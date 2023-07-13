@@ -48,43 +48,63 @@
   background-color: #ffffff;
 }
 
-#detail {
+#section {
+  position: absolute;
+  width: 342px;
+  top: 235px;
+  left: 22px;
+}
+
+.post {
+  margin-bottom: 20px;
+  background-color: #ffedd2;
+  border-radius: 10px;
   width: 342px;
   height: 119px;
-  background: #ffffff;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 4px;
-  position: absolute;
-  margin-top: 70%;
-  margin-left: 50%;
-  transform: translate(-50%, -50%);
+  color: #4f4f4f;
+  text-align: left;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-#myInfo {
-  position: absolute;
-  width: 342px;
-  height: 90px;
-  margin-top: 150%;
-  margin-left: 6.5%;
-  font-weight: bold;
-  font-size: 24px;
-  text-align: left;
-  color: #000000;
-  border: none;
-  border-bottom: 1px solid #aab1b3;
-  background-color: #ffffff;
+.detail {
+  width: 72px;
+  height: 77px;
+  border-radius: 64px;
 }
 
-#region {
-  position: absolute;
-  width: 342px;
-  height: 90px;
-  margin-top: 173%;
-  margin-left: 6.5%;
-  font-weight: bold;
-  font-size: 24px;
-  text-align: left;
-  color: #000000;
-  border: none;
-  background-color: #ffffff;
+.menu1 {
+  display: flex;
+  align-items: center;
+}
+
+.img {
+  margin-right: 16px;
+}
+
+.placename {
+  font-size: 20px;
+}
+
+.day {
+  font-size: 16px;
+  color: var(--sub-color, #aab1b3);
+}
+
+.edit,
+.delete {
+  border-radius: 231px;
+  border: 0.5px solid #a37b59;
+  background: #cebba9;
+  box-shadow: 0.5px 0.5px 5px 0px #cebba9, -0.5px -0.5px 5px 0px #cebba9;
+  font-size: 14px;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.delete {
+  margin-right: 20px;
 }

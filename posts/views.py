@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Post, Tag, Region, Category
 from .forms import ReviewForm
+from review.models import Review
+
+from django.urls import reverse
 
 # Create your views here.
 def posts_list_view(request): # 전체 글 조회
@@ -146,26 +149,68 @@ def filtered_posts(request):
 #         'category': category
 #     })
 
+def review_create_view(request, id): # 리뷰 생성
+    post = get_object_or_404(Post, id=id)
 
-def create_review(request, post_id):
-    post = get_object_or_404(Post, id=post_id)
-
-    if request.method == 'POST':
-        form = ReviewForm(request.POST)
-        if form.is_valid():
-            review = form.save(commit=False)
-            review.post = post
-            review.user = request.user
-            review.save()
-            return redirect('http://127.0.0.1:8000/posts/1/review/')
+    if request.method == 'GET':
+        return render(request, 'posts/review_form.html')
     else:
-        form = ReviewForm()
+        reviewTitle = request.POST.get('reviewTitle')
+        reviewText = request.POST.get('reviewText')
+        user = request.user
 
-    context = {
-        'form': form,
-        'post_id': post_id,
-    }
-    return render(request, 'posts/create_review.html', context)
+        Review.objects.create(
+            post=post,
+            reviewTitle=reviewTitle,
+            reviewText=reviewText,
+            user=user
+        )
+        return redirect('posts:post-list')
+
+def review_delete_view(request,id): # 리뷰 삭제
+    #post = get_object_or_404(Post, id=id)
+
+    review = get_object_or_404(Review, id=id)
+    if request.method == 'POST':
+        review.delete()
+        return redirect(f"/user/{request.user.id}/review/")
+
+
+def review_edit_view(request, id): # 리뷰 수정
+    review = get_object_or_404(Review, id=id)
+
+    if request.method == 'GET':
+        context = { 'review' : review }
+        return render(request,'posts/review_form.html', context)
+    elif request.method == 'POST':
+        reviewTitle = request.POST.get('reviewTitle')
+        reviewText = request.POST.get('reviewText')
+        # 데이터 변경(수정)
+        review.reviewTitle = reviewTitle
+        review.reviewText = reviewText
+        review.save()
+
+        return redirect(f"/user/{request.user.id}/review/")
+
+# def create_review(request, post_id):
+#     post = get_object_or_404(Post, id=post_id)
+#
+#     if request.method == 'POST':
+#         form = ReviewForm(request.POST)
+#         if form.is_valid():
+#             review = form.save(commit=False)
+#             review.post = post
+#             review.user = request.user
+#             review.save()
+#             return redirect('http://127.0.0.1:8000/posts/1/review/')
+#     else:
+#         form = ReviewForm()
+#
+#     context = {
+#         'form': form,
+#         'post_id': post_id,
+#     }
+#     return render(request, 'posts/create_review.html', context)
 
 
 

@@ -1,25 +1,25 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Document</title>
-    </head>
-        <body>
-        <div id="container">
-            <div id="review">리뷰 작성</div>
-            <form method="POST" class="post-form">
-                {% csrf_token %}
-                <div class="form-group">
-                    <div id="title" for="titleInput">제목</div>
-                    {{ form.reviewTitle }}
-                </div>
-                <div id="content" for="contentInput">내용</div>
-                    {{ form.reviewText }}
-                <button type="submit" id="post">작성 완료</button>
-            </form>
-        </div>
-    </body>
-</html>
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--    <head>-->
+<!--        <meta charset="UTF-8">-->
+<!--        <meta name="viewport"-->
+<!--              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--        <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--        <title>Document</title>-->
+<!--    </head>-->
+<!--        <body>-->
+<!--        <div id="container">-->
+<!--            <div id="review">리뷰 작성</div>-->
+<!--            <form method="POST" class="post-form">-->
+<!--                {% csrf_token %}-->
+<!--                <div class="form-group">-->
+<!--                    <div id="title" for="titleInput">제목</div>-->
+<!--                    {{ form.reviewTitle }}-->
+<!--                </div>-->
+<!--                <div id="content" for="contentInput">내용</div>-->
+<!--                    {{ form.reviewText }}-->
+<!--                <button type="submit" id="post">작성 완료</button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </body>-->
+<!--</html>-->

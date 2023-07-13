@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Review Input</title>
+</head>
+<body>
+    <h1>Review 입력 및 수정 화면</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div>
+            <label for="id_reviewTitle">제목</label>
+            <textarea name="reviewTitle" id="id_reviewTitle" cols="5" rows="5">{{ review.reviewTitle }}</textarea>
+        </div>
+        <div>
+            <label for="id_reviewText">내용</label>
+            <textarea name="reviewText" id="id_reviewText" cols="30" rows="10">{% if review %}{{ review.reviewText }}{% endif %}</textarea>
+        </div>
+        <div>
+            <button type="submit">저장하기</button>
+        </div>
+    </form>
+</body>
+</html>
