@@ -11,6 +11,12 @@
             {{ post.placename }}<br/>
             {{ post.region }}<br/>
             {{ post.tag }}<br/>
+<!--            {% for tag in post.tags.all %}-->
+<!--                {{ tag.name }}<br/>-->
+<!--            {% endfor %}-->
+<!--            {% for tag in selected_tags %}-->
+<!--                {{ tag.name }}<br/>-->
+<!--            {% endfor %}-->
             {{ post.content }}<br/>
             {{ post.tip }}<br/>
         </div>
@@ -33,6 +39,7 @@
         </form>
 </body>
 </html>
+
 
 
 <!-- Review 정보 표시 -->
