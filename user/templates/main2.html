@@ -15,7 +15,10 @@
         {{ request.user.pk }}
       </div>
       <div id="mainImage"></div>
-      <button type="submit" id="loginBtn">효도 컨설팅 시작!</button>
+      <form action="{% url 'user:user-consulting' %}" method="POST">
+        {% csrf_token %}
+        <button id="loginBtn" type="submit">효도 컨설팅 시작!</button>
+      </form>
     </div>
   </body>
 </html>

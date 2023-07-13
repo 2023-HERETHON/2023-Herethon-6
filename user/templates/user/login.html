@@ -9,11 +9,12 @@
   <body>
     <div id="container">
       <div id="loginText">로그인</div>
-      <form method="post" id="loginForm"> {% csrf_token %}
+      <form method="post"  class="post-form" id="loginForm">
+        {% csrf_token %}
         <div id="idText">아이디</div>
-        <input type="text" id="idInput" name="userName" />
+        <input type="text" id="idInput" name="username" value="{{ form.username.value|default_if_none:'' }}"/>
         <div id="pwText">비밀번호</div>
-        <input type="password" id="pwInput" name="userPassword" /><br />
+        <input type="password" id="pwInput" name="password" value="{{ form.password.value|default_if_none:'' }}" /><br />
         <label><input type="checkbox" id="autologin" />자동 로그인</label><br />
         <button type="submit" id="loginBtn">로그인</button>
       </form>
