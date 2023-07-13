@@ -1,0 +1,132 @@
+* {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+#container {
+  width: 390px;
+  height: 744px;
+  margin: 0 auto;
+  position: relative;
+  background-color: white;
+}
+
+#title {
+  position: absolute;
+  margin-top: 15%;
+  margin-left: 6.5%;
+  font-weight: bold;
+  font-size: 24px;
+  color: #a37b59;
+}
+
+#idText {
+  position: absolute;
+  margin-top: 40%;
+  margin-left: 6.5%;
+  font-size: 20px;
+  font-weight: bold;
+  color: #000000;
+}
+
+#idInput {
+  box-sizing: border-box;
+  position: absolute;
+  width: 342px;
+  height: 37px;
+  border: none;
+  border-bottom: 1px solid #aab1b3;
+  margin-top: 55%;
+  margin-left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#pwText {
+  position: absolute;
+  margin-top: 65%;
+  margin-left: 6.5%;
+  font-size: 20px;
+  font-weight: bold;
+  color: #000000;
+}
+
+#pwInput {
+  box-sizing: border-box;
+  position: absolute;
+  width: 342px;
+  height: 37px;
+  border: none;
+  border-bottom: 1px solid #aab1b3;
+  margin-top: 80%;
+  margin-left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#pwCheckText {
+  position: absolute;
+  margin-top: 90%;
+  margin-left: 6.5%;
+  font-size: 20px;
+  font-weight: bold;
+  color: #000000;
+}
+
+#pwCheckInput {
+  box-sizing: border-box;
+  position: absolute;
+  width: 342px;
+  height: 37px;
+  border: none;
+  border-bottom: 1px solid #aab1b3;
+  margin-top: 105%;
+  margin-left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#name {
+  position: absolute;
+  margin-top: 115%;
+  margin-left: 6.5%;
+  font-size: 20px;
+  font-weight: bold;
+  color: #000000;
+}
+
+#nameInput {
+  box-sizing: border-box;
+  position: absolute;
+  width: 342px;
+  height: 37px;
+  border: none;
+  border-bottom: 1px solid #aab1b3;
+  margin-top: 130%;
+  margin-left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+input::placeholder {
+  font-size: 18px;
+}
+
+#startBtn {
+  position: absolute;
+  width: 342px;
+  height: 74px;
+  filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  background: #422f21;
+  border-radius: 4px;
+
+  font-size: 26px;
+  line-height: 100%;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+
+  margin-top: 160%;
+  margin-left: 50%;
+  transform: translate(-50%, -50%);
+}

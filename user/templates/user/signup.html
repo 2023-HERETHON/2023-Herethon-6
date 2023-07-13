@@ -1,37 +1,54 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>회원가입</title>
-</head>
-<body>
-    <div class="container my-3">
-        <div class="row my-3">
-            <div class="col-4">
-                <h4>회원가입</h4>
-            </div>
-        </div>
-        <form method="post" class="post-form" action="{% url 'user:user-signup' %}">{% csrf_token %}
-            <div class="form-group">
-                <div id="idText" for="userId">사용자 이름</div>
-                <input type="text" class="form-control" name="username" id="userId" value="{{ form.username.value|default_if_none:'' }}">
-            </div>
-            <div class="form-group">
-                <div id="pwText" for="pwInput">비밀번호</div>
-                <input type="password" class="form-control" name="password1" id="pwInput" value="{{ form.password1.value|default_if_none:'' }}">
-            </div>
-            <div class="form-group">
-                <div for="pwCheckInput">비밀번호 확인</div>
-                <input type="password" class="form-control" name="password2" id="pwCheckInput" value="{{ form.password2.value|default_if_none:'' }}">
-            </div>
-            <div class="form-group">
-                <div id="name" for="nameInput">이메일</div>
-                <input type="text" class="form-control" name="email" id="nameInput" value="{{ form.email.value|default_if_none:'' }}">
-            </div>
-            <div class="form-group">
-                <button type="submit" id="startBtn" class="btn btn-primary">효도 컨설팅 가입하기</button>
-            </div>
-        </form>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입 페이지</title>
+    <link rel="stylesheet" href="{% static '/css/join.css'%}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="container">
+      <div id="title">멋사님만을 위한 효도 컨설팅,<br />지금 시작해볼까요?</div>
+      <form method="post" id="loginForm" action="{% url 'user:user-signup' %}">{% csrf_token %}
+        <div id="idText">아이디</div>
+        <input
+          type="text"
+          id="idInput"
+          name="username"
+          placeholder="아이디를 입력해주세요."
+          value="{{ form.username.value|default_if_none:'' }}"
+        />
+        <div id="pwText">비밀번호</div>
+        <input
+          type="password"
+          id="pwInput"
+          name="password1"
+          placeholder="비밀번호를 입력해주세요."
+           value="{{ form.password1.value|default_if_none:'' }}"
+        />
+        <div id="pwCheckText">비밀번호 확인</div>
+        <input
+          type="password"
+          id="pwCheckInput"
+          name="password2"
+          placeholder="동일한 비밀번호를 입력해주세요."
+          value="{{ form.password2.value|default_if_none:'' }}"
+        />
+        <div id="name">이메일</div>
+        <input
+          type="text"
+          id="nameInput"
+          name="email"
+          placeholder="이메일을 입력해주세요."
+          value="{{ form.email.value|default_if_none:'' }}"
+        />
+        <button type="submit" id="startBtn">효도 컨설팅 가입하기</button>
+      </form>
     </div>
-</body>
+  </body>
 </html>
