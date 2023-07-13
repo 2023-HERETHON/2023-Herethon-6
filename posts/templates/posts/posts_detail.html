@@ -52,5 +52,7 @@
     </li>
   {% empty %}
     <li>첫 번째 리뷰를 달아주세요!</li>
+
   {% endfor %}
 </ul>
+<a href="{% url 'posts:create_review' post.id %}" target="_blank">리뷰 작성</a>

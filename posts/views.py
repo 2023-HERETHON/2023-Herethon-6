@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Post, Tag, Region, Category
-
+from .forms import ReviewForm
 
 # Create your views here.
 def posts_list_view(request): # 전체 글 조회
@@ -146,6 +146,26 @@ def filtered_posts(request):
 #         'category': category
 #     })
 
+
+def create_review(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.post = post
+            review.user = request.user
+            review.save()
+            return redirect('http://127.0.0.1:8000/posts/1/review/')
+    else:
+        form = ReviewForm()
+
+    context = {
+        'form': form,
+        'post_id': post_id,
+    }
+    return render(request, 'posts/create_review.html', context)
 
 
 

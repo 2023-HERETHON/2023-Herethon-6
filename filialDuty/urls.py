@@ -26,6 +26,7 @@ urlpatterns = [
     #path('main2', main2, name='main2'),
     path('main1', main1, name='main1'),
     path('posts/', include('posts.urls')),
+    path('review/', include('review.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
