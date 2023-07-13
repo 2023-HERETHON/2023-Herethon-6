@@ -5,8 +5,9 @@ from .forms import UserForm
 from django.contrib.auth import authenticate, login
 from posts.models import Post
 def login_view(request):
+    if request.method == "GET":
+        return render(request, 'user/login.html')
 
-    return
 
 
 def signup_view(request):
@@ -23,8 +24,12 @@ def signup_view(request):
         form = UserForm()
     return render(request, 'user/signup.html', {'form': form})
 
-def main2(request): # home 페이지
+def main1(request): # 로그인 전 페이지
+    return render(request, 'main1.html')
+
+def main2(request): # 로그인 후  페이지
     return render(request, 'main2.html')
+
 
 def logout_view(request):
     return
