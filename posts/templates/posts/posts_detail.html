@@ -41,15 +41,16 @@
 </html>
 
 
-
 <!-- Review 정보 표시 -->
-<!-- <h2>Reviews</h2>
+<h1></h1>
 <ul>
   {% for review in post.review_set.all %}
     <li>
+      <strong>{{ review.user.username }}</strong>:
       <p>{{ review.reviewText }}</p>
+      <p>{{ review.created_at | date:'m월 d일' }}</p>
     </li>
   {% empty %}
-    <li>No reviews yet.</li>
+    <li>첫 번째 리뷰를 달아주세요!</li>
   {% endfor %}
-</ul> -->
+</ul>
