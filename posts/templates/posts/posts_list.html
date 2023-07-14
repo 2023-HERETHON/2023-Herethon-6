@@ -1,32 +1,69 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="ko">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>목록 화면</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--    <h1>Post 목록 화면</h1>-->
-<!--    {% for post in posts_list %}-->
-<!--    <a href="http://127.0.0.1:8000/posts/{{ post.id }}/">-->
-<!--        <img alt="" src="{{ post.image.url }}">-->
-<!--    </a>-->
-<!--    {% endfor %}-->
-
-<!--</body>-->
-<!--</html>-->
-
+{% load static %}
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>목록 화면</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static '/css/consulting.css'%}">
+    <title>큐레이팅 페이지</title>
 </head>
 <body>
-    <h1>Post 목록 화면</h1>
-    {% for post in posts_list %}
-        <a href="{% url 'posts:post-detail' id=post.id %}">
-            <img alt="" src="{{ post.image.url }}">
-        </a>
-    {% endfor %}
+    <div class="top-bar">
+        <img src="{% static '/images/logo1.png' %}" class="logo">
+        <div>
+            <div id="saveList" onclick="location.href='http://127.0.0.1:8000/user/{{request.user.pk}}/like/'">
+                <img src="{% static '/images/heart.png'%}" class="heart">
+            </div>
+            <div id="myPage" onclick="location.href='http://127.0.0.1:8000/user/{{request.user.pk}}/review/'">
+                <img src="{% static '/images/person.png'%}" class="mypage">
+            </div>
+        </div>
+    </div>
+    <div class="curate">
+        <div>
+            <h3>OO님과 부모님을 위해 골랐어요.</h3>
+            <<div class="menu">
+                <button type="button" class="btn-1">식당</button>
+                <button type="button" class="btn-2">카페</button>
+                <button type="button" class="btn-3">즐길거리</button>
+            </div>
+        </div>
+        <div class="list">
+                <div>
+                    {% for post in posts_list %}
+                    <a href="{% url 'posts:post-detail' id=post.id %}">
+                    <img alt="" src="{{ post.image.url }}" class= "back" src="{% static '/images/Frame10.png' %}" width="159px">
+                    </a>
+                {% endfor %}
+                </div>
+<!--            <div>-->
+<!--                <img src="{% static '/images/Frame10.png' %}" class="back" onclick="detail(1)">-->
+<!--                <img src="{% static '/images/heart2.png' %}" class="heart" id="heart0">-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                <img src="{% static '/images/Frame11.png' %}" class="back" onclick="detail(2)">-->
+<!--                <img src="{% static '/images/heart2.png' %}" class="heart" id="heart1">-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                <img src="{% static '/images/Frame12.png' %}" class="back" onclick="detail(3)">-->
+<!--                <img src="{% static '/images/heart2.png' %}" class="heart" id="heart2">-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                <img src="{% static '/images/Frame13.png' %}" class="back" onclick="detail(4)">-->
+<!--                <img src="{% static '/images/heart2.png' %}" class="heart" id="heart3">-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                <img src="{% static '/images/Frame14.png' %}" class="back" onclick="detail(5)">-->
+<!--                <img src="{% static '/images/heart2.png' %}" class="heart" id="heart4">-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                <img src="{% static '/images/Frame15.png' %}" class="back" onclick="detail(6)">-->
+<!--                <img src="{% static '/images/heart2.png' %}" class="heart" id="heart5">-->
+<!--            </div>-->
+        </div>
+    </div>
 </body>
 </html>
