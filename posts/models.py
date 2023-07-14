@@ -20,6 +20,9 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = 'Categories'
+
 class Post(models.Model):
     like = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="userLike")
     placename=models.CharField('장소명', max_length=50, null=False)
