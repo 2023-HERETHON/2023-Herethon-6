@@ -1,23 +1,129 @@
-<form method="GET" action="{% url 'posts:filtered_posts' %}">
-  <h3>테마 선택:</h3>
-  <ul>
-    {% for tag in tags %}
-    <li>
-      <label>
-        <input type="checkbox" name="tag" value="{{ tag.id }}"> {{ tag.name }}
-      </label>
-    </li>
-    {% endfor %}
-  </ul>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static '/css/consulting.css'%}">
+    <title>컨설팅 페이지</title>
+<style>
 
-  <h3>지역 선택:</h3>
-  <select name="region">
-    <option value="">지역 선택</option>
-    {% for region in regions %}
-    <option value="{{ region.id }}">{{ region.name }}</option>
-    {% endfor %}
-  </select>
-  <br>
+label {
+width: 100px;
+font-size:16px;}
+</style>
+</head>
+<body>
+    <div class="top-bar">
+        <img src="{% static '/images/logo1.png' %}" class="logo">
+        <div>
+            <div id="saveList" onclick="location.href='http://127.0.0.1:8000/user/{{request.user.pk}}/like/'">
+                <img src="{% static '/images/heart.png'%}" class="heart">
+            </div>
+            <div id="myPage" onclick="location.href='http://127.0.0.1:8000/user/{{request.user.pk}}/review/'">
+                <img src="{% static '/images/person.png'%}" class="mypage">
+            </div>
+        </div>
+    </div>
+    <div class="select">
+        <div class="keyword">
+            <h3 class="title">
+                부모님과 떠나는 일상의 여행!
+                <br>
+                원하는 효도 테마를 골라주세요.
+            </h3>
+            <form method="GET" action="{% url 'posts:filtered_posts' %}">
+            <div class="theme">
+                {% for tag in tags %}
+                  <label>
+                    <input type="checkbox" name="tag" value="{{ tag.id }}"> {{ tag.name }}
+                  </label>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="location">
+            <h3>지역을 골라주세요.</h3>
+            <div class="sel">
+                <select name="region">
+                    <option value="">지역 선택</option>
+                    {% for region in regions %}
+                    <option value="{{ region.id }}">{{ region.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <br>
+            <button class="bth-1">내 위치 주변으로</button>
+        </div>
+        <div class="bth-2" onclick="goTo()"><button>효도 코스 추천받기</button></div>
+        </form>
+    </div>
+    <script>
+        const buttons = document.querySelectorAll('.theme button');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (!button.classList.contains('active')) {
+                    // css 속성 변경
+                    button.style.border = '0.5px solid #A37B59';
+                    button.style.background = '#CEBAA9';
+                    button.style.boxShadow = '0.5px 0.5px 5px 0px #CEBAA9, -0.5px -0.5px 5px 0px #CEBAA9';
+                    button.classList.add('active');
+                } else {
+                    // 원래 속성으로 복원
+                    button.style.border = '0.05px solid rgba(57, 69, 69, 0.30)';
+                    button.style.background = '#FFFFFF';
+                    button.style.boxShadow = '0.5px 0.5px 5px 0px rgba(0, 0, 0, 0.50), -0.5px -0.5px 5px 0px rgba(0, 0, 0, 0.50)';
+                    button.classList.remove('active');
+                }
+            });
+        });
 
-  <button type="submit">맞춤형 효도 코스 확인하기</button>
-</form>
+        function categoryChange(key) {
+            var option_1 = ["구/군 선택"];
+            var option_2 = ["구 선택", "강남구", "강동구", "강북구", "강서구", "관악구", "광진구", "구로구", "금천구", "노원구", "도봉구", "동대문구", "동작구", "마포구", "서대문구", "서초구", "성동구", "성북구", "송파구", "양천구", "영등포구", "용산구", "은평구", "종로구", "중구", "중랑구"];
+            var option_3 = ["구/군 선택", "계양구","남구","남동구","동구","부평구","서구","연수구","중구","강화군","옹진군"];
+            var option_4 = ["구 선택", "대덕구","동구","서구","유성구","중구"];
+            var option_5 = ["구 선택", "광산구","남구","동구","북구","서구"];
+            var option_6 = ["구/군 선택", "남구","달서구","동구","북구","서구","수성구","중구","달성군"];
+            var option_7 = ["구/군 선택", "남구","동구","북구","중구","울주군"];
+            var option_8 = ["구/군 선택", "강서구","금정구","남구","동구","동래구","부산진구","북구","사상구","사하구","서구","수영구","연제구","영도구","중구","해운대구","기장군"];
+            var option_9 = ["시/군 선택", "고양시", "과천시", "광명시", "광주시", "구리시", "군포시", "김포시", "남양주시", "동두천시", "부천시", "성남시", "수원시", "시흥시", "안산시", "안성시", "안양시", "양주시", "여주시", "오산시", "용인시", "의왕시", "의정부시", "이천시", "파주시", "평택시", "포천시", "하남시", "화성시", "가평군", "양평군", "연천군"];
+            var option_10 = ["시/군 선택", "강릉시", "고성군", "동해시", "삼척시", "속초시", "양구군", "양양군", "영월군", "원주시", "인제군", "정선군", "철원군", "춘천시", "태백시", "평창군", "홍천군", "화천군", "횡성군"];
+            var option_11 = ["시/군 선택", "계룡시", "공주시", "논산시", "당진시", "보령시", "서산시", "아산시", "천안시", "금산군", "부여군", "서천군", "예산군", "청양군", "태안군", "홍성군"
+            ];
+            var option_12 = ["시/군 선택", "군산시", "김제시", "남원시", "익산시", "전주시", "정읍시", "광양시", "나주시", "목포시", "순천시", "여수시", "고창군","무주군","부안군","순창군","완주군","임실군","장수군","진안군","강진군","고흥군","곡성군","구례군","담양군","무안군","보성군","신안군","영광군","영암군","완도군","장성군","장흥군","진도군","함평군","해남군","화순군"];
+            var option_13 = ["시/군 선택", "경산시", "경주시", "구미시", "김천시", "문경시", "상주시", "안동시", "영주시", "영천시", "포항시", "거제시", "김해시","마산시","밀양시","사천시","양산시","진주시","진해시","창원시","통영시", "고령군","군위군","봉화군","성주군","영덕군","영양군","예천군","울릉군","울진군","의성군","청도군","청송군","칠곡군", "거창군","고성군","남해군","산청군","의령군","창녕군","하동군","함안군","함양군","합천군"];
+            var option_14 = ["시/군 선택", "서귀포시", "제주시", "남제주군","북제주군"];
+            var target = document.getElementById("option");
+            var option;
+
+            if(key==1) option = option_1;
+            else if(key==2) option = option_2;
+            else if(key==3) option = option_3;
+            else if(key==4) option = option_4;
+            else if(key==5) option = option_5;
+            else if(key==6) option = option_6;
+            else if(key==7) option = option_7;
+            else if(key==8) option = option_8;
+            else if(key==9) option = option_9;
+            else if(key==10) option = option_10;
+            else if(key==11) option = option_11;
+            else if(key==12) option = option_12;
+            else if(key==13) option = option_13;
+            else if(key==14) option = option_14;
+
+            target.options.length = 0;
+
+            for (i in option) {
+                var opt = document.createElement("option");
+                opt.value = option[i];
+                opt.innerHTML = option[i];
+                target.appendChild(opt);
+            }
+        }
+
+    </script>
+</body>
+</html>

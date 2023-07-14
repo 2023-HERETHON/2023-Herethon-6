@@ -20,18 +20,20 @@
     <div id="myPage" onclick="location.href='http://127.0.0.1:8000/user/{{request.user.pk}}/review/'">
       <img src="{% static '/images/person.png'%}" alt="마이페이지" width="20.5px" height="22.5px" />
     </div>
-    <div id="title">{{user.username}}님의 효도 내역</div>
+    <div id="title">{{ user.username }}님의 효도 내역</div>
     <button type="submit" id="viewMore">더보기&gt;</button>
     <div id="section">
       {% for review in reviewList %}
         <div class="post">
-          <div class="detail"></div>
           <div class="menu1">
             <img class="img" src="{{ review.post.image.url }}" alt="Post Image" width="72">
-            <h4 class="placename">{{ review.post.placename }}</h4>
-            <h4 class="day">{{ review.created_at }}</h4>
+            <div>
+              <h4 class="placename">{{ review.post.placename }}</h4>
+              <h4 class="day">{{ review.created_at }}</h4>
+            </div>
           </div>
-          <form method="GET" action="{% url 'posts:review-edit' review.id %}">
+          <div id="btn-all">
+            <form method="GET" action="{% url 'posts:review-edit' review.id %}">
             <button id="update" type="edit">수정</button>
           </form>
           <form action="{% url 'posts:review-delete' review.id %}" method="POST">
@@ -39,6 +41,7 @@
             <button id="delete" type="submit">삭제</button>
             <input type="hidden" name="ids" value="{{ review.id }}">
           </form>
+          </div>
 
         </div>
       {% endfor %}

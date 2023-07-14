@@ -36,14 +36,14 @@ def posts_like_view(request, id):  # 찜
             post.like.add(request.user)  # 찜 등록
             post.save()
         return render(request, 'posts/posts_detail.html', context)
-
 def filter_posts(request):
     if request.method == 'GET':
         regions = Region.objects.all()
         tags = Tag.objects.all()
         categories = Category.objects.all()
         return render(request, 'posts/filter.html', {'regions': regions, 'tags': tags, 'categories': categories})
-
+    else:
+        return render(request, 'posts/filter.html')
 
 def filtered_posts(request):
     if request.method == 'GET':
@@ -56,7 +56,8 @@ def filtered_posts(request):
 
         posts = Post.objects.filter(region=selected_region)
         if selected_tags:
-            posts = posts.filter(tags__in=selected_tags).distinct()
+            for tag in selected_tags:
+                posts = posts.filter(tags=tag)
 
         if category_id:
             category = Category.objects.get(id=category_id)
@@ -109,11 +110,9 @@ def review_edit_view(request, id): # 리뷰 수정
     elif request.method == 'POST':
         reviewTitle = request.POST.get('reviewTitle')
         reviewText = request.POST.get('reviewText')
-        rating=request.POST.get('rating')
         # 데이터 변경(수정)
         review.reviewTitle = reviewTitle
         review.reviewText = reviewText
-        review.rating = rating
         review.save()
 
         return redirect(f"/user/{request.user.id}/review/")
@@ -137,7 +136,6 @@ def review_edit_view(request, id): # 리뷰 수정
 #         'post_id': post_id,
 #     }
 #     return render(request, 'posts/create_review.html', context)
-
 
 
 

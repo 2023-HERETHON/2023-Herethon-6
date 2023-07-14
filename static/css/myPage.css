@@ -7,7 +7,7 @@
   height: 844px;
   margin: 0 auto;
   position: relative;
-  background-color: #ffffff;
+  background-color: #f5f5f5;
 }
 
 #logo {
@@ -57,16 +57,16 @@
 
 .post {
   margin-bottom: 20px;
-  background-color: #ffedd2;
+  border-radius: 4px;
+  background: #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-  width: 342px;
-  height: 119px;
+  width: 322px;
+  height: 129px;
   color: #4f4f4f;
   text-align: left;
   padding-left: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+
 }
 
 .detail {
@@ -77,24 +77,36 @@
 
 .menu1 {
   display: flex;
-  align-items: center;
+   width: 360px;
+   padding-top: 15px;
 }
 
 .img {
+  height:72px;
   margin-right: 16px;
+  border-radius: 15px;
 }
 
 .placename {
   font-size: 20px;
+  margin: 0;
 }
 
 .day {
   font-size: 16px;
   color: var(--sub-color, #aab1b3);
+  margin: 0;
 }
 
-.edit,
-.delete {
+#btn-all {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+    padding-bottom: 10px;
+}
+
+#update,
+#delete {
   border-radius: 231px;
   border: 0.5px solid #a37b59;
   background: #cebba9;

@@ -1,11 +1,6 @@
-* {
-    font-family: "Noto Sans KR", sans-serif;
-}
-
 body {
-    margin: 0 auto;
-    width: 390px;
     background: var(--bg-color, #FAFAFA);
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 .top-bar {
@@ -18,7 +13,8 @@ body {
 }
 
 .logo {
-    width: 50px;
+    width: 47px;
+    height: 24.598px;
     margin-left: 5%;
 }
 
@@ -26,6 +22,10 @@ body {
     display: flex;
     justify-content: flex-end;
 }
+
+/* .top-bar > div > img {
+    margin-right: 35%;
+} */
 
 .heart {
     width: 27px;
@@ -35,8 +35,7 @@ body {
 
 .mypage {
     width: 21px;
-    height: 23px;
-    padding-right: 10px;
+    height: 23px
 }
 
 .select {
@@ -60,6 +59,7 @@ h3 {
     flex-wrap: wrap;
     justify-content: space-around
 }
+
 
 .theme button {
     padding: 9px 17px;
@@ -90,7 +90,7 @@ select {
 }
 
 .bth-1 {
-    width: 100%;
+    width: 342px;
     height: 53px;
     border: none;
     border-radius: 4px;
@@ -105,9 +105,8 @@ select {
 }
 
 .bth-2 button {
-    width: 100%;
+    width: 342px;
     height: 74px;
-    margin-bottom: 90px;
     border: none;
     background: var(--main-color, #422F21);
     border: none;
