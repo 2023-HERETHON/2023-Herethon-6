@@ -63,7 +63,7 @@ SNS 해시태그 #엄마랑 게시물만 무려 120만개!
           <td  align="center"><p>기획 및 디자인</p><p>피그마 와이어프레임</p><p>ppt 제작 및 발표</p></td>
           <td  align="center"><p>컨설팅 페이지</p><p>큐레이팅 페이지</p><p>큐레이팅 상세 페이지</p></td>
           <td  align="center"><p>로그인, 회원가입 페이지</p><p>저장 페이지</p><p>리뷰 작성 페이지</p></td>
-          <td  align="center"><p>로그인, 회원가입 기능</p><p>찜하기 CRUD 기능</p><p>리뷰 CRUD 기</p></td>
+          <td  align="center"><p>로그인, 회원가입 기능</p><p>찜하기 CRUD 기능</p><p>리뷰 CRUD 기능</p></td>
           <td  align="center"><p>테마 필터링 기능</p><p>지역 필터링 기능</p><p>조건 유지 카테고리 필터링 기능</p></td>
           <td  align="center"><p>Post 조회 기능</p><p>리뷰 작성 기능</p><p>저장목록 조회 기능</p></td>
      </tr>
