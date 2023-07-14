@@ -74,235 +74,236 @@ SNS 해시태그 #엄마랑 게시물만 무려 120만개!
   ```
   📂 2023-Herethon-6
   C:.
-|   2410636.jpg
-|   76CD.jpg
-|   76CD_6FaCLip.jpg
-|   76CD_ABvRBbQ.jpg
-|   76CD_iCIb9vP.jpg
-|   db.sqlite3
-|   images.jfif
-|   manage.py
-|   README.md
-|
-+---.idea
-|   |   .gitignore
-|   |   2023-Herethon-6.iml
-|   |   misc.xml
-|   |   modules.xml
-|   |   vcs.xml
-|   |
-|   \---inspectionProfiles
-|           profiles_settings.xml
-|
-+---css
-|       consulting.css
-|       curating.css
-|       detail.css
-|
-+---filialDuty
-|   |   asgi.py
-|   |   settings.py
-|   |   urls.py
-|   |   wsgi.py
-|   |   __init__.py
-|   |
-|   \---__pycache__
-|           settings.cpython-310.pyc
-|           settings.cpython-311.pyc
-|           settings.cpython-39.pyc
-|           urls.cpython-310.pyc
-|           urls.cpython-311.pyc
-|           urls.cpython-39.pyc
-|           wsgi.cpython-310.pyc
-|           wsgi.cpython-311.pyc
-|           wsgi.cpython-39.pyc
-|           __init__.cpython-310.pyc
-|           __init__.cpython-311.pyc
-|           __init__.cpython-39.pyc
-|
-+---images
-|       Frame10.png
-|       Frame11.png
-|       Frame12.png
-|       Frame13.png
-|       Frame14.png
-|       Frame15.png
-|       heart.png
-|       heart2.png
-|       heart3.png
-|       person.png
-|       Rectangle17.png
-|       star1.png
-|       star2.png
-|
-+---pages
-|       consulting.html
-|       curating.html
-|       detail.html
-|       join.html
-|       login.html
-|       main1.html
-|       main2.html
-|       myPage.html
-|       saveList.html
-|
-+---posts
-|   |   admin.py
-|   |   apps.py
-|   |   models.py
-|   |   tests.py
-|   |   urls.py
-|   |   views.py
-|   |   __init__.py
-|   |
-|   +---migrations
-|   |   |   0001_initial.py
-|   |   |   0002_post_like.py
-|   |   |   0003_auto_20230713_0556.py
-|   |   |   0004_auto_20230713_0600.py
-|   |   |   0005_auto_20230713_0604.py
-|   |   |   0006_auto_20230713_0833.py
-|   |   |   0007_auto_20230713_1009.py
-|   |   |   0008_auto_20230713_1011.py
-|   |   |   0009_rename_category_post_categories.py
-|   |   |   __init__.py
-|   |   |
-|   |   \---__pycache__
-|   |           0001_initial.cpython-310.pyc
-|   |           0001_initial.cpython-39.pyc
-|   |           0002_post_like.cpython-310.pyc
-|   |           0002_post_like.cpython-39.pyc
-|   |           0003_auto_20230713_0556.cpython-310.pyc
-|   |           0004_auto_20230713_0600.cpython-310.pyc
-|   |           0005_auto_20230713_0604.cpython-310.pyc
-|   |           0006_auto_20230713_0833.cpython-310.pyc
-|   |           0007_auto_20230713_1009.cpython-310.pyc
-|   |           0008_auto_20230713_1011.cpython-310.pyc
-|   |           0009_rename_category_post_categories.cpython-310.pyc
-|   |           __init__.cpython-310.pyc
-|   |           __init__.cpython-39.pyc
-|   |
-|   +---templates
-|   |   \---posts
-|   |           filter.html
-|   |           filtered_post.html
-|   |           posts_detail.html
-|   |           posts_list.html
-|   |
-|   \---__pycache__
-|           admin.cpython-310.pyc
-|           admin.cpython-39.pyc
-|           apps.cpython-310.pyc
-|           apps.cpython-39.pyc
-|           models.cpython-310.pyc
-|           models.cpython-39.pyc
-|           urls.cpython-310.pyc
-|           urls.cpython-39.pyc
-|           views.cpython-310.pyc
-|           views.cpython-39.pyc
-|           __init__.cpython-310.pyc
-|           __init__.cpython-39.pyc
-|
-+---review
-|   |   admin.py
-|   |   apps.py
-|   |   models.py
-|   |   tests.py
-|   |   urls.py
-|   |   views.py
-|   |   __init__.py
-|   |
-|   +---migrations
-|   |   |   0001_initial.py
-|   |   |   __init__.py
-|   |   |
-|   |   \---__pycache__
-|   |           0001_initial.cpython-310.pyc
-|   |           0001_initial.cpython-39.pyc
-|   |           __init__.cpython-310.pyc
-|   |           __init__.cpython-39.pyc
-|   |
-|   \---__pycache__
-|           admin.cpython-310.pyc
-|           admin.cpython-39.pyc
-|           apps.cpython-310.pyc
-|           apps.cpython-39.pyc
-|           models.cpython-310.pyc
-|           models.cpython-39.pyc
-|           __init__.cpython-310.pyc
-|           __init__.cpython-39.pyc
-|
-+---static
-|   +---css
-|   |       consulting.css
-|   |       curating.css
-|   |       detail.css
-|   |
-|   \---images
-|           Frame10.png
-|           Frame11.png
-|           Frame12.png
-|           Frame13.png
-|           Frame14.png
-|           Frame15.png
-|           heart.png
-|           heart2.png
-|           heart3.png
-|           person.png
-|           Rectangle17.png
-|           star1.png
-|           star2.png
-|
-+---user
-|   |   admin.py
-|   |   apps.py
-|   |   forms.py
-|   |   models.py
-|   |   tests.py
-|   |   urls.py
-|   |   views.py
-|   |   __init__.py
-|   |
-|   +---migrations
-|   |   |   __init__.py
-|   |   |
-|   |   \---__pycache__
-|   |           __init__.cpython-310.pyc
-|   |           __init__.cpython-311.pyc
-|   |           __init__.cpython-39.pyc
-|   |
-|   +---templates
-|   |   |   main1.html
-|   |   |
-|   |   \---user
-|   |           consulting.html
-|   |           login.html
-|   |           main2.html
-|   |           saveList.html
-|   |           signup.html
-|   |
-|   \---__pycache__
-|           admin.cpython-310.pyc
-|           admin.cpython-311.pyc
-|           admin.cpython-39.pyc
-|           apps.cpython-310.pyc
-|           apps.cpython-311.pyc
-|           apps.cpython-39.pyc
-|           forms.cpython-310.pyc
-|           forms.cpython-39.pyc
-|           models.cpython-310.pyc
-|           models.cpython-311.pyc
-|           models.cpython-39.pyc
-|           urls.cpython-310.pyc
-|           urls.cpython-39.pyc
-|           views.cpython-310.pyc
-|           views.cpython-39.pyc
-|           __init__.cpython-310.pyc
-|           __init__.cpython-311.pyc
-|           __init__.cpython-39.pyc
-|
-\---venv
-        .gitignore
+  |   2410636.jpg
+  |   76CD.jpg
+  |   76CD_6FaCLip.jpg
+  |   76CD_ABvRBbQ.jpg
+  |   76CD_iCIb9vP.jpg
+  |   db.sqlite3
+  |   images.jfif
+  |   manage.py
+  |   README.md
+  |
+  +---.idea
+  |   |   .gitignore
+  |   |   2023-Herethon-6.iml
+  |   |   misc.xml
+  |   |   modules.xml
+  |   |   vcs.xml
+  |   |
+  |   \---inspectionProfiles
+  |           profiles_settings.xml
+  |
+  +---css
+  |       consulting.css
+  |       curating.css
+  |       detail.css
+  |
+  +---filialDuty
+  |   |   asgi.py
+  |   |   settings.py
+  |   |   urls.py
+  |   |   wsgi.py
+  |   |   __init__.py
+  |   |
+  |   \---__pycache__
+  |           settings.cpython-310.pyc
+  |           settings.cpython-311.pyc
+  |           settings.cpython-39.pyc
+  |           urls.cpython-310.pyc
+  |           urls.cpython-311.pyc
+  |           urls.cpython-39.pyc
+  |           wsgi.cpython-310.pyc
+  |           wsgi.cpython-311.pyc
+  |           wsgi.cpython-39.pyc
+  |           __init__.cpython-310.pyc
+  |           __init__.cpython-311.pyc
+  |           __init__.cpython-39.pyc
+  |
+  +---images
+  |       Frame10.png
+  |       Frame11.png
+  |       Frame12.png
+  |       Frame13.png
+  |       Frame14.png
+  |       Frame15.png
+  |       heart.png
+  |       heart2.png
+  |       heart3.png
+  |       person.png
+  |       Rectangle17.png
+  |       star1.png
+  |       star2.png
+  |
+  +---pages
+  |       consulting.html
+  |       curating.html
+  |       detail.html
+  |       join.html
+  |       login.html
+  |       main1.html
+  |       main2.html
+  |       myPage.html
+  |       saveList.html
+  |
+  +---posts
+  |   |   admin.py
+  |   |   apps.py
+  |   |   models.py
+  |   |   tests.py
+  |   |   urls.py
+  |   |   views.py
+  |   |   __init__.py
+  |   |
+  |   +---migrations
+  |   |   |   0001_initial.py
+  |   |   |   0002_post_like.py
+  |   |   |   0003_auto_20230713_0556.py
+  |   |   |   0004_auto_20230713_0600.py
+  |   |   |   0005_auto_20230713_0604.py
+  |   |   |   0006_auto_20230713_0833.py
+  |   |   |   0007_auto_20230713_1009.py
+  |   |   |   0008_auto_20230713_1011.py
+  |   |   |   0009_rename_category_post_categories.py
+  |   |   |   __init__.py
+  |   |   |
+  |   |   \---__pycache__
+  |   |           0001_initial.cpython-310.pyc
+  |   |           0001_initial.cpython-39.pyc
+  |   |           0002_post_like.cpython-310.pyc
+  |   |           0002_post_like.cpython-39.pyc
+  |   |           0003_auto_20230713_0556.cpython-310.pyc
+  |   |           0004_auto_20230713_0600.cpython-310.pyc
+  |   |           0005_auto_20230713_0604.cpython-310.pyc
+  |   |           0006_auto_20230713_0833.cpython-310.pyc
+  |   |           0007_auto_20230713_1009.cpython-310.pyc
+  |   |           0008_auto_20230713_1011.cpython-310.pyc
+  |   |           0009_rename_category_post_categories.cpython-310.pyc
+  |   |           __init__.cpython-310.pyc
+  |   |           __init__.cpython-39.pyc
+  |   |
+  |   +---templates
+  |   |   \---posts
+  |   |           filter.html
+  |   |           filtered_post.html
+  |   |           posts_detail.html
+  |   |           posts_list.html
+  |   |
+  |   \---__pycache__
+  |           admin.cpython-310.pyc
+  |           admin.cpython-39.pyc
+  |           apps.cpython-310.pyc
+  |           apps.cpython-39.pyc
+  |           models.cpython-310.pyc
+  |           models.cpython-39.pyc
+  |           urls.cpython-310.pyc
+  |           urls.cpython-39.pyc
+  |           views.cpython-310.pyc
+  |           views.cpython-39.pyc
+  |           __init__.cpython-310.pyc
+  |           __init__.cpython-39.pyc
+  |
+  +---review
+  |   |   admin.py
+  |   |   apps.py
+  |   |   models.py
+  |   |   tests.py
+  |   |   urls.py
+  |   |   views.py
+  |   |   __init__.py
+  |   |
+  |   +---migrations
+  |   |   |   0001_initial.py
+  |   |   |   __init__.py
+  |   |   |
+  |   |   \---__pycache__
+  |   |           0001_initial.cpython-310.pyc
+  |   |           0001_initial.cpython-39.pyc
+  |   |           __init__.cpython-310.pyc
+  |   |           __init__.cpython-39.pyc
+  |   |
+  |   \---__pycache__
+  |           admin.cpython-310.pyc
+  |           admin.cpython-39.pyc
+  |           apps.cpython-310.pyc
+  |           apps.cpython-39.pyc
+  |           models.cpython-310.pyc
+  |           models.cpython-39.pyc
+  |           __init__.cpython-310.pyc
+  |           __init__.cpython-39.pyc
+  |
+  +---static
+  |   +---css
+  |   |       consulting.css
+  |   |       curating.css
+  |   |       detail.css
+  |   |
+  |   \---images
+  |           Frame10.png
+  |           Frame11.png
+  |           Frame12.png
+  |           Frame13.png
+  |           Frame14.png
+  |           Frame15.png
+  |           heart.png
+  |           heart2.png
+  |           heart3.png
+  |           person.png
+  |           Rectangle17.png
+  |           star1.png
+  |           star2.png
+  |
+  +---user
+  |   |   admin.py
+  |   |   apps.py
+  |   |   forms.py
+  |   |   models.py
+  |   |   tests.py
+  |   |   urls.py
+  |   |   views.py
+  |   |   __init__.py
+  |   |
+  |   +---migrations
+  |   |   |   __init__.py
+  |   |   |
+  |   |   \---__pycache__
+  |   |           __init__.cpython-310.pyc
+  |   |           __init__.cpython-311.pyc
+  |   |           __init__.cpython-39.pyc
+  |   |
+  |   +---templates
+  |   |   |   main1.html
+  |   |   |
+  |   |   \---user
+  |   |           consulting.html
+  |   |           login.html
+  |   |           main2.html
+  |   |           saveList.html
+  |   |           signup.html
+  |   |
+  |   \---__pycache__
+  |           admin.cpython-310.pyc
+  |           admin.cpython-311.pyc
+  |           admin.cpython-39.pyc
+  |           apps.cpython-310.pyc
+  |           apps.cpython-311.pyc
+  |           apps.cpython-39.pyc
+  |           forms.cpython-310.pyc
+  |           forms.cpython-39.pyc
+  |           models.cpython-310.pyc
+  |           models.cpython-311.pyc
+  |           models.cpython-39.pyc
+  |           urls.cpython-310.pyc
+  |           urls.cpython-39.pyc
+  |           views.cpython-310.pyc
+  |           views.cpython-39.pyc
+  |           __init__.cpython-310.pyc
+  |           __init__.cpython-311.pyc
+  |           __init__.cpython-39.pyc
+  |
+  \---venv
+          .gitignore
+
 
   ```
 
