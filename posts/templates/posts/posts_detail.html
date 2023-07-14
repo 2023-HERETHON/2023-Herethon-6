@@ -1,4 +1,4 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -46,13 +46,40 @@
 <ul>
   {% for review in post.review_set.all %}
     <li>
-      <strong>{{ review.user.username }}</strong>:
+        <div class="rating">
+              {% for i in "1.0 2.0 3.0 4.0 5.0"|slice:":" %}
+                {% if review.rating|floatformat == i %}
+                    <img id="stars" src="{% static '/images/star-'|add:i|add:'.0.png' %}" alt="별점" width="100px" height="20px">
+<!--                    <img src="{% static '/images/logo.png'%}" alt="로고" width="50px" ; />-->
+                {% endif %}
+
+            {% endfor %}
+
+        </div>
+<!--      <strong>{{ review.user.username }}</strong>:-->
+        <strong>{{ review.reviewTitle }}</strong>
       <p>{{ review.reviewText }}</p>
-      <p>{{ review.created_at | date:'m월 d일' }}</p>
+      <p>{{ review.user.username }} | {{ review.created_at | date:'y.m.d.' }}</p>
+
     </li>
   {% empty %}
     <li>첫 번째 리뷰를 달아주세요!</li>
 
   {% endfor %}
+
 </ul>
 <a href="{% url 'posts:create_review' post.id %}" target="_blank">리뷰 작성</a>
+
+<script>
+  // 별점 선택 시 이벤트 처리
+  const stars = document.querySelectorAll('.stars');
+  stars.forEach(starGroup => {
+    const inputs = starGroup.querySelectorAll('input');
+    inputs.forEach(input => {
+      input.addEventListener('click', () => {
+        const rating = input.value;
+        console.log(rating); // 선택된 별점 값 확인 (추후 서버로 전송하거나 필요한 처리를 수행)
+      });
+    });
+  });
+</script>

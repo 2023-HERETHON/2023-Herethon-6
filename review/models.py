@@ -10,3 +10,11 @@ class Review(models.Model):
     reviewText = models.TextField() #리뷰 댓글
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)  # User와의 Foreign Key
+    RATING_CHOICES = (
+        ('1.0', '1.0'),
+        ('2.0', '2.0'),
+        ('3.0', '3.0'),
+        ('4.0', '4.0'),
+        ('5.0', '5.0'),
+    )
+    rating = models.CharField(max_length=10, default='5.0', choices=RATING_CHOICES)

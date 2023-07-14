@@ -158,14 +158,16 @@ def review_create_view(request, id): # 리뷰 생성
         reviewTitle = request.POST.get('reviewTitle')
         reviewText = request.POST.get('reviewText')
         user = request.user
+        rating=request.POST.get('rating') #별점 값 가져오기
 
         Review.objects.create(
             post=post,
             reviewTitle=reviewTitle,
             reviewText=reviewText,
-            user=user
+            user=user,
+            rating=rating
         )
-        return redirect('posts:post-list')
+        return redirect('posts:post-detail', id=post.id)
 
 def review_delete_view(request,id): # 리뷰 삭제
     #post = get_object_or_404(Post, id=id)

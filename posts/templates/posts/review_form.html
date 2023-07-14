@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -5,10 +6,35 @@
     <title>Review Input</title>
 </head>
 <body>
-    <h1>Review 입력 및 수정 화면</h1>
+    <h1>Review 입력 화면</h1>
     <form action="" method="POST">
         {% csrf_token %}
         <div>
+<!--            <div class="rating">-->
+<!--              <div id="rating{{ like.id }}" class="stars">-->
+<!--                <input type="radio" id="star5-{{ like.id }}" name="rating{{ like.id }}" value="5" />-->
+<!--                <label for="star5-{{ like.id }}"></label>-->
+<!--                <input type="radio" id="star4-{{ like.id }}" name="rating{{ like.id }}" value="4" />-->
+<!--                <label for="star4-{{ like.id }}"></label>-->
+<!--                <input type="radio" id="star3-{{ like.id }}" name="rating{{ like.id }}" value="3" />-->
+<!--                <label for="star3-{{ like.id }}"></label>-->
+<!--                <input type="radio" id="star2-{{ like.id }}" name="rating{{ like.id }}" value="2" />-->
+<!--                <label for="star2-{{ like.id }}"></label>-->
+<!--                <input type="radio" id="star1-{{ like.id }}" name="rating{{ like.id }}" value="1" />-->
+<!--                <label for="star1-{{ like.id }}"></label>-->
+<!--              </div>-->
+             <div class="rating">
+                <label for="id_rating">별점</label>
+                <select name="rating" id="id_rating">
+                    <option value="5">5.0</option>
+                    <option value="4">4.0</option>
+                    <option value="3">3.0</option>
+                    <option value="2">2.0</option>
+                    <option value="1">1.0</option>
+                </select>
+
+            </div>
+
             <label for="id_reviewTitle">제목</label>
             <textarea name="reviewTitle" id="id_reviewTitle" cols="5" rows="5">{{ review.reviewTitle }}</textarea>
         </div>
@@ -22,3 +48,16 @@
     </form>
 </body>
 </html>
+
+  <script>
+        const ratingSelect = document.getElementById('id_rating');
+        const ratingImage = document.getElementById('rating-image');
+        const imageFolderPath = '{% static "images/" %}';  // 이미지 폴더 경로
+
+        ratingSelect.addEventListener('change', () => {
+            const selectedValue = ratingSelect.value;
+            const imageUrl = imageFolderPath + 'star-' + selectedValue + '.png';
+            ratingImage.src = imageUrl;
+            ratingImage.style.display = 'block';
+        });
+    </script>
