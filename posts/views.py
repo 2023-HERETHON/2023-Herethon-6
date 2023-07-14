@@ -25,6 +25,9 @@ def posts_detail_view(request, id):  # 세부 글 조회
 
 def posts_like_view(request, id):  # 찜
     post = get_object_or_404(Post, id=id)
+    context = {
+        'post': post,
+    }
     if request.method == 'POST':
         if post.like.filter(id=request.user.id).exists():  # 찜 이미 누른 상태일 때
             post.like.remove(request.user)  # 찜 취소
@@ -32,7 +35,7 @@ def posts_like_view(request, id):  # 찜
         else:  # 찜  누르지 않은 상태일 때
             post.like.add(request.user)  # 찜 등록
             post.save()
-        return redirect('posts:post-list')
+        return render(request, 'posts/posts_detail.html', context)
 
 def filter_posts(request):
     if request.method == 'GET':
@@ -106,9 +109,11 @@ def review_edit_view(request, id): # 리뷰 수정
     elif request.method == 'POST':
         reviewTitle = request.POST.get('reviewTitle')
         reviewText = request.POST.get('reviewText')
+        rating=request.POST.get('rating')
         # 데이터 변경(수정)
         review.reviewTitle = reviewTitle
         review.reviewText = reviewText
+        review.rating = rating
         review.save()
 
         return redirect(f"/user/{request.user.id}/review/")
