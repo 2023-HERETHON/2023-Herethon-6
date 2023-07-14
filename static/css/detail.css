@@ -1,30 +1,44 @@
-body {
-    background: var(--bg-color, #FAFAFA);
-    font-family: 'Noto Sans KR', sans-serif;
+* {
+    font-family: "Noto Sans KR", sans-serif;
 }
+
+body {
+    margin: 0 auto;
+    width: 390px;
+    background: var(--bg-color, #FAFAFA);
+}
+
 
 .top-bar {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding-top: 18.5px;
     padding-bottom: 18px;
     margin-top: 50px;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid rgba(32, 40, 33, 0.25);
 }
 
-.top-bar img {
-    margin-right: 4%;
+.logo {
+    width: 47px;
+    height: 24.598px;
+    margin-left: 5%;
+}
+
+.top-bar > div {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .heart {
     width: 27px;
     height: 27px;
+    padding-right: 10px;
 }
 
 .mypage {
     width: 21px;
-    height: 23px
+    height: 23px;
+    padding-right: 10px;
 }
 
 .recommed {
@@ -66,8 +80,7 @@ body {
 
 a {
     margin-top: 26px;
-    font-size: 18px;
-    font-weight: 600;
+    display: flex;
 }
 
 a:link, a:visited {
@@ -75,23 +88,37 @@ a:link, a:visited {
     color: black;
 }
 
+a > div {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-right: 3px;
+}
+
+a > img {
+    width: 24px;
+    height: 24px;
+}
+
+/*#stars{
+    margin-left: 16.5px;
+}*/
+
 .top ~ div {
-    width: 342px;
-    height: 215px;
+    padding:20px;
+    height: 150px;
     margin-top: 30px;
+    padding-top:25px;
+    padding-bottom: 10px;
+
     border-radius: 4px;
     background: #FFF;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
-.top ~ div > img {
-    margin-top: 12px;
-    margin-left: 17px;
-}
-
 .top ~ div > h3 {
     margin-top: 10px;
-    margin-left: 17px;
+    margin-left: 0.5px;
     margin-bottom: 14px;
     font-size: 20px;
 }
@@ -103,7 +130,7 @@ a:link, a:visited {
 }
 
 .top ~ div > span {
-    margin-left: 200px;
+
     font-size: 15px;
     color: var(--sub-color, #AAB1B3);
 }
@@ -112,16 +139,68 @@ a:link, a:visited {
     margin-bottom: 44px;
 }
 
+.bottom {
+    width: 390px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 40px;
+}
+
+#mogg2 {
+    width: 56px;
+    margin-right: 40px;
+}
+
+#me {
+    width: 56px;
+    height: 56px;
+    margin-top: 30px;
+    margin-right: 10px;
+}
+
 button {
-    width: 342px;
-    padding: 17px 70px;
+    width: 270px;
+    padding: 20px 50px;
+    margin-left: 5px;
+    margin-top: 20px;
+    border-radius: 4px;
+    background: var(--main-color, #422F21);
+    font-size: 24px;
+    color: #FFFFFF;
+
+
+}
+
+#heart {
+    margin-left: -70px;
+    margin-top: 8px;
+}
+
+#heart1 {
+    margin-left: -70px;
+    margin-top: 14px;
+}
+
+.mogg {
+    width: 56px;
+    background: #ffffff;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+
+.btn btn-link text-danger {
+    width: 251px;
+    padding: 20px 50px;
     margin-top: 20px;
     border-radius: 4px;
     background: var(--main-color, #422F21);
     font-size: 24px;
     color: #FFFFFF;
 }
-
 /* 모달창 */
 .modal_wrap {
     border: 1px solid #422F21;
@@ -210,5 +289,48 @@ button {
     left: 20px;
     padding-left: 65px;
     font-size: 20px;
-    color: #FFF;
+    color: #FFF
+}
+
+#userinfo{
+    text-align:right;
+    padding-bottom: 0px;
+}
+
+#contents {
+    width:315px;
+    height: 30px;
+    margin-left: 0.5px;
+    overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: break-all;
+
+}
+
+p{
+    padding-bottom:0px;
+    margin-bottom:0px;
+}
+
+#imageBox {
+    margin-left: auto;
+    margin-right:auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+width: 342px;
+height: 304px;
+left: 24px;
+top: 151px;
+border-radius: 27px;
+
+    overflow:hidden;
+
+}
+
+#image {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
 }

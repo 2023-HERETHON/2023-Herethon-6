@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,16 +7,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/detail.css">
+    <link rel="stylesheet" href="{% static '/css/detail.css'%}">
     <title>큐레이팅 상세페이지</title>
 </head>
 <body>
     <div class="top-bar">
-        <img src="../images/heart.png" class="heart">
-        <img src="../images/person.png" class="mypage">
+        <img src="{% static '/images/logo1.png' %}" class="logo">
+        <div>
+            <div id="saveList" onclick="location.href='http://127.0.0.1:8000/user/{{request.user.pk}}/like/'">
+                <img src="{% static '/images/heart.png'%}" class="heart">
+            </div>
+            <div id="myPage" onclick="location.href='http://127.0.0.1:8000/user/{{request.user.pk}}/review/'">
+                <img src="{% static '/images/person.png'%}" class="mypage">
+            </div>
+        </div>
     </div>
     <div class="recommed">
-        <img src="../images/Rectangle17.png">
+        <img src="{% static '/images/Rectangle17.png' %}">
         <div>
             <h3 class="title">꽃누리들밥</h3>
             <p>12가지 반찬이 무한리필되는<br>든든한 경복궁역 한정식 맛집</p>
@@ -31,20 +39,20 @@
         <div class="review">
             <div class="top">
                 <h3>리뷰</h3>
-                <a href="">더보기></a>
+                <a href=""><div>작성하기</div><img src="{% static '/images/write.png' %}"></a>
             </div>
             <div>
-                <img src="../images/star1.png">
+                <!-- <img src="{% static '/images/star1.png' %}"> -->
                 <h3>분위기 좋고 맛있어요!</h3>
                 <p>
-                    주차도 가능하고 부모님도 좋아하셨어요~ 
+                    주차도 가능하고 부모님도 좋아하셨어요~
                     <br>잘 먹고 갑니다!
                     <br>다만 음식이 조금 늦게 나왔어요.
                 </p>
                 <span>soom** | 23.07.12</span>
             </div>
             <div class="last">
-                <img src="../images/star2.png">
+                <!-- <img src="{% static '/images/star2.png' %}"> -->
                 <h3>재방문 했어요 :)</h3>
                 <p>
                     부모님 모시고 나올 때마다 항상 가는 곳이에요.
@@ -53,14 +61,16 @@
                 </p>
                 <span>mogg** | 23.07.10</span>
             </div>
+        </div>
+        <div class="bottom">
             <button id="modal_btn">공유하기</button>
             <!-- 공유하기 버튼 누르면 모달창 -->
             <div class="modal_background"></div>
             <div class="modal_wrap">
                 <div class="text">링크를 복사했습니다.</div>
             </div>
-            <button id="modal_btn2">저장하기</button>
-            <!-- 저장하기 버튼 누르면 모달창 -->
+            <img src="{% static '/images/heart4.png' %}" id="modal_btn2">
+            <!-- 하트 누르면 모달창 -->
             <div class="modal_background2"></div>
             <div class="modal_wrap2">
                 <div class="text2">장소를 저장했습니다.</div>
@@ -88,6 +98,15 @@
         window.addEventListener("click", (e)=>{
             e.target === modal_background2 ? close(2) : false;
         });
+        //하트 클릭 이벤트
+        const heartImage = document.querySelector("#modal_btn2");
+        heartImage.addEventListener("click", () => {
+            if (heartImage.src.includes("heart4.png")) {
+                heartImage.src = "{% static '/images/heart5.png' %}";
+            } else if (heartImage.src.includes("heart5.png")) {
+                heartImage.src = "{% static '/images/heart4.png' %}";
+            }
+        });
         function close(key){
             if (key===1) {
                 modal_wrap.classList.remove("show-modal");
@@ -97,7 +116,7 @@
                 modal_wrap2.classList.remove("show-modal");
                 modal_background2.classList.remove("show-modal");
             }
-            
+
         }
 
         function open(key){
@@ -111,5 +130,4 @@
             }
         }
     </script>
-</body>
-</html>
+</b

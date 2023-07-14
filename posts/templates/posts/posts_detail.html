@@ -2,84 +2,161 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static '/css/detail.css'%}">
+    <title>큐레이팅 상세페이지</title>
+    <link rel="stylesheet" href="{% static '/css/detail.css'%}" />
 </head>
 <body>
-    <h1>Post 상세 화면</h1>
+    <div class="top-bar">
+      <div class="logo" onclick="location.href='http://127.0.0.1:8000/user/main2/'">
+        <img src="{% static '/images/logo.png'%}" alt="로고" width="50px" ; />
+      </div>
         <div>
-            {{ post.placename }}<br/>
-            {{ post.region }}<br/>
-            {{ post.tag }}<br/>
+            <div id="saveList" onclick="location.href='http://127.0.0.1:8000/user/{{request.user.pk}}/like/'">
+                <img src="{% static '/images/heart.png'%}" class="heart">
+            </div>
+            <div id="myPage" onclick="location.href='http://127.0.0.1:8000/user/{{request.user.pk}}/review/'">
+                <img src="{% static '/images/person.png'%}" class="mypage">
+            </div>
+        </div>
+    </div>
+    <div class="recommed">
+        <div id="imageBox">
+          <img id="image" alt="" src="{{ post.image.url }}">
+        </div>
+
+        <div>
+            <h3 class="title">{{ post.placename }}<br/></h3>
+<!--            {{ post.region }}<br/>-->
+<!--            {{ post.tag }}<br/>-->
 <!--            {% for tag in post.tags.all %}-->
 <!--                {{ tag.name }}<br/>-->
 <!--            {% endfor %}-->
 <!--            {% for tag in selected_tags %}-->
 <!--                {{ tag.name }}<br/>-->
 <!--            {% endfor %}-->
-            {{ post.content }}<br/>
-            {{ post.tip }}<br/>
+            <p>{{ post.content }}</p>
+            <h3 class="add">이렇게 활용하세요! </h3>
+            <p>{{ post.tip }}</p><br/>
         </div>
-        <div > <img alt="" src="{{ post.image.url }}"></div>
+
+    <!-- Review 정보 표시 -->
+    <div class="review">
+        <div class="top">
+            <h3>리뷰</h3>
+            <a href="{% url 'posts:create_review' post.id %}" target="_blank"><div>작성하기</div><img src="{% static '/images/write.png' %}"></a>
+<!--            <a href=""><div>작성하기</div><img src="{% static '/images/write.png' %}"></a>-->
+        </div>
+              {% for review in post.review_set.all %}
+
+
+    <!--      <strong>{{ review.user.username }}</strong>:-->
+        <div>
+           <div class="rating">
+                {% for i in "1.0 2.0 3.0 4.0 5.0"|slice:":" %}
+                {% if review.rating|floatformat == i %}
+                <img id="stars" src="{% static '/images/star-'|add:i|add:'.0.png' %}" alt="별점" width="100px" height="20px">
+    <!--        <img src="{% static '/images/logo.png'%}" alt="로고" width="50px" ; />-->
+                {% endif %}
+                {% endfor %}
+           </div>
+            <h3>{{ review.reviewTitle }}</h3>
+            <p id="contents">{{ review.reviewText }}</p>
+            <p id="userinfo">{{ review.user.username }} | {{ review.created_at | date:'y.m.d.' }}</p>
+        </div>
+          {% empty %}
+            첫 번째 리뷰를 달아주세요!
+          {% endfor %}
+
+    </div>
+</div>
+    <div class="bottom">
+        <!--이 블럭 다시 체크-->
+        <button id="modal_btn">공유하기</button>
+        <div class="modal_background"></div>
+        <div class="modal_wrap">
+                <div class="text">링크를 복사했습니다.</div>
+        </div>
+
+
         <form action="{% url 'posts:post-like' post.id %}" method='POST'>
             {% csrf_token %}
             {% if request.user in post.like.all %}
-                <button class="btn btn-link text-danger">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
-                        <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"/>
-                    </svg>
+                <button class="mogg" class="btn btn-link text-danger">
+                    <img id="heart" src="{% static '/images/heart4.png' %}" alt="빈하트" width="60px" height="60px">
                 </button>
+
+            <!--                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart" viewBox="0 0 16 16">-->
+<!--                        <path d="m8 6.236-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z"/>-->
+<!--                    </svg>-->
             {% else %}
-                <button class="btn btn-link text-danger">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart" viewBox="0 0 16 16">
-                        <path d="m8 6.236-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z"/>
-                    </svg>
+                <button class="mogg" class="btn btn-link text-danger">
+                    <img id="heart1" src="{% static '/images/heart5.png' %}" alt="찬하트" width="57px" height="50px">
                 </button>
             {% endif %}
         </form>
+        <div class="modal_background2"></div>
+        <div class="modal_wrap2">
+            <div class="text2">장소를 저장했습니다.</div>
+        </div>
+    </div>
 </body>
 </html>
 
-
-<!-- Review 정보 표시 -->
-<h1></h1>
-<ul>
-  {% for review in post.review_set.all %}
-    <li>
-        <div class="rating">
-              {% for i in "1.0 2.0 3.0 4.0 5.0"|slice:":" %}
-                {% if review.rating|floatformat == i %}
-                    <img id="stars" src="{% static '/images/star-'|add:i|add:'.0.png' %}" alt="별점" width="100px" height="20px">
-<!--                    <img src="{% static '/images/logo.png'%}" alt="로고" width="50px" ; />-->
-                {% endif %}
-
-            {% endfor %}
-
-        </div>
-<!--      <strong>{{ review.user.username }}</strong>:-->
-        <strong>{{ review.reviewTitle }}</strong>
-      <p>{{ review.reviewText }}</p>
-      <p>{{ review.user.username }} | {{ review.created_at | date:'y.m.d.' }}</p>
-
-    </li>
-  {% empty %}
-    <li>첫 번째 리뷰를 달아주세요!</li>
-
-  {% endfor %}
-
-</ul>
-<a href="{% url 'posts:create_review' post.id %}" target="_blank">리뷰 작성</a>
-
 <script>
-  // 별점 선택 시 이벤트 처리
-  const stars = document.querySelectorAll('.stars');
-  stars.forEach(starGroup => {
-    const inputs = starGroup.querySelectorAll('input');
-    inputs.forEach(input => {
-      input.addEventListener('click', () => {
-        const rating = input.value;
-        console.log(rating); // 선택된 별점 값 확인 (추후 서버로 전송하거나 필요한 처리를 수행)
-      });
+//버튼 누르면 모달창 이벤트
+    const modal_wrap = document.querySelector(".modal_wrap");
+    const modal_background = document.querySelector(".modal_background");
+    const modal_wrap2 = document.querySelector(".modal_wrap2");
+    const modal_background2 = document.querySelector(".modal_background2");
+    //모달창 보여주기
+    document.querySelector("#modal_btn").addEventListener("click", ()=>{
+        open(1);
     });
-  });
+    document.querySelector("#modal_btn2").addEventListener("click", ()=>{
+        open(2);
+    });
+    //모달창 외부 클릭으로 닫기
+    window.addEventListener("click", (e)=>{
+        e.target === modal_background ? close(1) : false;
+    });
+    window.addEventListener("click", (e)=>{
+        e.target === modal_background2 ? close(2) : false;
+    });
+    //하트 클릭 이벤트
+    const heartImage = document.querySelector("#modal_btn2");
+    heartImage.addEventListener("click", () => {
+        if (heartImage.src.includes("heart4.png")) {
+            heartImage.src = "{% static '/images/heart5.png' %}";
+        } else if (heartImage.src.includes("heart5.png")) {
+            heartImage.src = "{% static '/images/heart4.png' %}";
+        }
+    });
+    function close(key){
+        if (key===1) {
+            modal_wrap.classList.remove("show-modal");
+            modal_background.classList.remove("show-modal");
+        }
+        else if (key===2) {
+            modal_wrap2.classList.remove("show-modal");
+            modal_background2.classList.remove("show-modal");
+        }
+
+    }
+
+    function open(key){
+        if (key===1) {
+            modal_wrap.classList.add("show-modal");
+            modal_background.classList.add("show-modal");
+        }
+        else if (key===2) {
+            modal_wrap2.classList.add("show-modal");
+            modal_background2.classList.add("show-modal");
+        }
+    }
 </script>
