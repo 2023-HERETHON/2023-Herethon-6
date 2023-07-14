@@ -47,12 +47,12 @@
   <td  align="center">백엔드</td>
      </tr>
       <tr width="100%">
-          <td  align="center"><p>담당 기능 A</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
-          <td  align="center"><p>담당 기능 A</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
+          <td  align="center"><p>임수민</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
+          <td  align="center"><p>목소연</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
           <td  align="center"><p>권지민</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
-          <td  align="center"><p>담당 기능 A</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
-          <td  align="center"><p>담당 기능 A</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
-          <td  align="center"><p>Post 조회 기능</p><p>리뷰 작성 기능</p><p>찜목록 조회 기능</p></td>
+          <td  align="center"><p>김성주</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
+          <td  align="center"><p>강민지지</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
+          <td  align="center"><p>Post 조회 기능</p><p>리뷰 작성 기능</p><p>저장목록 조회 기능</p></td>
      </tr>
   </table>
 
