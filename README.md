@@ -70,6 +70,7 @@ SNS 해시태그 #엄마랑 게시물만 무려 120만개!
   </table>
 
 - **와이어프레임**
+  <hr>
   <img width="574" alt="KakaoTalk_20230715_053053907" src="https://github.com/2023-HERETHON/2023-Herethon-6/assets/126389940/6f63c7d4-530c-4214-968c-0ac25a39e91c">
 
 
