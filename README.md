@@ -23,24 +23,36 @@
 - **팀원 소개**
   <table border="" cellspacing="0" cellpadding="0" width="100%">
   <tr width="100%">
-  <td align="center">김멋사</a></td>
-  <td align="center">이멋사</a></td>
-  <td  align="center">정멋사</a></td>
+  <td align="center">임수민</a></td>
+  <td align="center">목소연</a></td>
+  <td  align="center">권지민</a></td>
+  <td align="center">김성주</a></td>
+  <td align="center">강민지</a></td>
+  <td  align="center">김원희</a></td>
   </tr>
   <tr width="100%">
   <td  align="center"><a href="https://imgbb.com/"><img src="https://i.ibb.co/sWXnzcJ/befbedf87e51f5b02aac8b882ada60fd-sticker.png" alt="befbedf87e51f5b02aac8b882ada60fd-sticker" border="0" width="90px"></a></td>
+  <td  align="center"><a href="https://imgbb.com/"><img src="https://i.ibb.co/MRr1QMW/f67635fddb50d05f2d0f142e63b0ab5c-sticker.png" alt="f67635fddb50d05f2d0f142e63b0ab5c-sticker" border="0" width="90px"></a></td>
+  <td  align="center"><a href="https://imgbb.com/"><img src="https://i.ibb.co/2KDG82L/d006044e5996d0023cd2e18425aa4677-sticker.png" alt="d006044e5996d0023cd2e18425aa4677-sticker" border="0" width="90px"></a></td>
+    <td  align="center"><a href="https://imgbb.com/"><img src="https://i.ibb.co/sWXnzcJ/befbedf87e51f5b02aac8b882ada60fd-sticker.png" alt="befbedf87e51f5b02aac8b882ada60fd-sticker" border="0" width="90px"></a></td>
   <td  align="center"><a href="https://imgbb.com/"><img src="https://i.ibb.co/MRr1QMW/f67635fddb50d05f2d0f142e63b0ab5c-sticker.png" alt="f67635fddb50d05f2d0f142e63b0ab5c-sticker" border="0" width="90px"></a></td>
   <td  align="center"><a href="https://imgbb.com/"><img src="https://i.ibb.co/2KDG82L/d006044e5996d0023cd2e18425aa4677-sticker.png" alt="d006044e5996d0023cd2e18425aa4677-sticker" border="0" width="90px"></a></td>
   </tr>
   <tr width="100%">
   <td  align="center">기획·디자인</td>
   <td  align="center">프론트엔드</td>
+  <td  align="center">프론트엔드</td>
+  <td  align="center">백엔드</td>
+  <td  align="center">백엔드</td>
   <td  align="center">백엔드</td>
      </tr>
       <tr width="100%">
           <td  align="center"><p>담당 기능 A</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
-           <td  align="center"><p>담당 기능 A</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
-            <td  align="center"><p>담당 기능 A</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
+          <td  align="center"><p>담당 기능 A</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
+          <td  align="center"><p>권지민</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
+          <td  align="center"><p>담당 기능 A</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
+          <td  align="center"><p>담당 기능 A</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
+          <td  align="center"><p>Post 조회 기능</p><p>리뷰 작성 기능</p><p>찜목록 조회 기능</p></td>
      </tr>
   </table>
 
