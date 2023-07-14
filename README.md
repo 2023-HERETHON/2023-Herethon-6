@@ -47,7 +47,7 @@
   <td  align="center">백엔드</td>
      </tr>
       <tr width="100%">
-          <td  align="center"><p>기획 및 디자인</p><p>피그마 와이어프레임</p><p>ppt 제작</p></td>
+          <td  align="center"><p>기획 및 디자인</p><p>피그마 와이어프레임</p><p>ppt 제작 및 발표</p></td>
           <td  align="center"><p>컨설팅 페이지</p><p>큐레이팅 페이지</p><p>큐레이팅 상세 페이지</p></td>
           <td  align="center"><p>로그인, 회원가입 페이지</p><p>저장 페이지</p><p>리뷰 작성 페이지</p></td>
           <td  align="center"><p>김성주</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
