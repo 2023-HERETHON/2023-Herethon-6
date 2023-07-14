@@ -1,5 +1,5 @@
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from django.contrib import auth
 from .forms import UserForm
@@ -63,6 +63,7 @@ def logout_view(request):
 #         }
 #         return render(request, 'user/saveList.html', context)
 def like_list_view(request, id): # 마이페이지 찜 목록 보기
+
     likeList = Post.objects.filter(like=request.user.id)
     context = {
         'likeList': likeList,
