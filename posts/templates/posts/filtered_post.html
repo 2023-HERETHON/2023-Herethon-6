@@ -1,17 +1,3 @@
-<!--{% if posts %}-->
-<!--  <ul>-->
-<!--    {% for post in posts %}-->
-<!--    <li>-->
-<!--      <h3>{{ post.placename }}</h3>-->
-<!--      <p>{{ post.content }}</p>-->
-
-<!--    </li>-->
-<!--    {% endfor %}-->
-<!--  </ul>-->
-<!--{% else %}-->
-<!--  <p>해당 조건에 맞는 글이 없습니다.</p>-->
-<!--{% endif %}-->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,38 +11,12 @@
     <h3>카테고리 선택:</h3>
       <ul>
         {% for category in categories %}
-          <li><a href="{% url 'posts:filtered_posts' category.id %}">{{ category.name }}</a></li>
+          <li><a href="{% url 'posts:filtered_posts' %}?category={{category.id}}&{{query_string}}">{{ category.name }}</a></li>
         {% endfor %}
       </ul>
-<!--    <ul>-->
-<!--      {% for category in categories %}-->
-<!--        <li>-->
-<!--          <form method="GET" action="{% url 'posts:filtered_posts' %}">-->
-<!--            <button type="submit" name="category" value="{{ category.id }}">{{ category.name }}</button>-->
-<!--          </form>-->
-<!--        </li>-->
-<!--      {% endfor %}-->
-<!--    </ul>-->
   </div>
 
-<!--  {% if category %}-->
-<!--    <h2>카테고리: {{ category.name }}</h2>-->
-<!--  {% endif %}-->
-
-<!--  {% if posts %}-->
-<!--    <ul>-->
-<!--      {% for post in posts %}-->
-<!--        <li>-->
-<!--          <h3>{{ post.placename }}</h3>-->
-<!--          <p>{{ post.content }}</p>-->
-<!--        </li>-->
-<!--      {% endfor %}-->
-<!--    </ul>-->
-<!--  {% else %}-->
-<!--    <p>해당 조건에 맞는 글이 없습니다.</p>-->
-<!--  {% endif %}-->
-
-<!--  {% if posts %}-->
+  {% if posts %}
     <ul>
       {% for post in posts %}
         <li>
@@ -69,9 +29,9 @@
         </li>
       {% endfor %}
     </ul>
-<!--  {% else %}-->
-<!--    <p>해당 조건에 맞는 글이 없습니다.</p>-->
-<!--  {% endif %}-->
+  {% else %}
+    <p>해당 조건에 맞는 코스가 없습니다.</p>
+  {% endif %}
 
 </body>
 </html>
