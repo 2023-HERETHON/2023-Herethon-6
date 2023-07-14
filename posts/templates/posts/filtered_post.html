@@ -1,38 +1,125 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>맞춤형 효도 코스</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static '/css/curating.css'%}">
+    <title>큐레이팅 상세페이지</title>
 </head>
 <body>
-  <h1>맞춤형 효도 코스</h1>
+    <div class="top-bar">
+        <img src="{% static '/images/logo1.png' %}" class="logo">
+        <div>
+            <div id="saveList" onclick="location.href='http://127.0.0.1:8000/user/{{request.user.pk}}/like/'">
+                <img src="{% static '/images/heart.png'%}" class="heart">
+            </div>
+            <div id="myPage" onclick="location.href='http://127.0.0.1:8000/user/{{request.user.pk}}/review/'">
+                <img src="{% static '/images/person.png'%}" class="mypage">
+            </div>
+        </div>
+    </div>
 
-  <div>
-    <h3>카테고리 선택:</h3>
-      <ul>
-        {% for category in categories %}
-          <li><a href="{% url 'posts:filtered_posts' %}?category={{category.id}}&{{query_string}}">{{ category.name }}</a></li>
-        {% endfor %}
-      </ul>
-  </div>
+  <div class="curate">
+    <div>
+      <h3> {{user.username}}님과 부모님을 위해 골랐어요.</h3>
+      <div class="menu1">
+            {% for category in categories %}
+            <a href="{% url 'posts:filtered_posts' %}?category={{category.id}}&{{query_string}}" id="a"><button class="btn-menu">{{ category.name }}</button></a>
+            {% endfor %}
+      </div>
+    </div>
 
   {% if posts %}
-    <ul>
-      {% for post in posts %}
-        <li>
+      <div class="list">
+        {% for post in posts %}
+        <div>
           <a href="{% url 'posts:post-detail' id=post.id %}">
-            <h3>{{ post.placename }}</h3>
-            <p>{{ post.content }}</p>
-            <p>Category: {{ post.categories.name }}</p>
-            <p>Tags: {% for tag in post.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+            <img class="back" alt="" src="{{ post.image.url }}" class= "back"  width="159px"></a>
           </a>
-        </li>
-      {% endfor %}
-    </ul>
+           <img src="{% static '/images/heart2.png' %}" class="heart" >
+        </div>
+        {% endfor %}
+      </div>
+
   {% else %}
     <p>해당 조건에 맞는 코스가 없습니다.</p>
   {% endif %}
 
+    </div>
+    <!-- 하트 누르면 모달창 -->
+      <div class="modal_background"></div>
+      <div class="modal_wrap">
+          <div class="text">장소를 저장했습니다.</div>
+      </div>
+  </div>
+
+
+    <script>
+const buttons = document.querySelectorAll(".btn-menu");
+buttons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    buttons.forEach((btn) => {
+      if (btn === button) {
+        btn.style.border = "0.5px solid #A37B59";
+        btn.style.background = "rgba(163, 123, 89, 0.50)";
+        btn.style.boxShadow =
+          "0.5px 0.5px 5px 0px #CEBAA9, -0.5px -0.5px 5px 0px #CEBAA9";
+      } else {
+        btn.style.border = "0.5px solid rgba(57, 69, 69, 0.30)";
+        btn.style.background = "#EFEFEF";
+        btn.style.boxShadow =
+          "0.5px 0.5px 5px 0px rgba(0, 0, 0, 0.50), -0.5px -0.5px 5px 0px rgba(0, 0, 0, 0.50)";
+      }
+    });
+
+    // 링크 이동
+    const link = button.querySelector("a");
+    if (link) {
+      const url = link.getAttribute("href");
+      if (url) {
+        setTimeout(() => {
+          window.location.href = url;
+        }, 300); // 0.3초 후에 링크 이동
+      }
+    }
+  });
+});
+
+
+
+        //하트 클릭 이벤트
+        const modal_wrap = document.querySelector(".modal_wrap");
+        const modal_background = document.querySelector(".modal_background");
+        const heartImages = document.querySelectorAll(".heart");
+        heartImages.forEach((heartImage, index) => {
+            heartImage.addEventListener("click", () => {
+                if (heartImage.src.includes("heart2.png")) {
+                    heartImage.src = "{% static '/images/heart3.png' %}";
+                    openModal();
+                } else if (heartImage.src.includes("heart3.png")) {
+                    heartImage.src = "{% static '/images/heart2.png' %}";
+                    closeModal();
+                }
+            });
+        });
+        // 모달창 외부 클릭으로 닫기
+        window.addEventListener("click", (e) => {
+            e.target === modal_background ? closeModal() : false;
+        });
+
+        function closeModal() {
+            modal_wrap.classList.remove("show-modal");
+            modal_background.classList.remove("show-modal");
+        }
+
+        function openModal() {
+            modal_wrap.classList.add("show-modal");
+            modal_background.classList.add("show-modal");
+        }
+    </script>
 </body>
 </html>
-

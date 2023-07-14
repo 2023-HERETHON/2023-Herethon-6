@@ -43,9 +43,9 @@ def signup_view(request): # 회원가입
 def main1(request): # 로그인 전 페이지
     return render(request, 'main1.html')
 
-def consulting_view(request): # 컨설팅 페이지
-    if request.method == 'POST':
-        return render(request, 'user/consulting.html')
+# def consulting_view(request): # 컨설팅 페이지
+#     if request.method == 'POST':
+#         return render(request, 'user/consulting.html')
 
 
 def main2(request): # 로그인 후  페이지
