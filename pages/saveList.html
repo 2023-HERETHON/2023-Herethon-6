@@ -18,3 +18,34 @@
     </div>
   </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>저장 목록 페이지</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="saveList">
+        <img src="/images/heart.png" alt="찜목록" />
+      </div>
+      <div id="myPage">
+        <img src="/images/person.png" alt="마이페이지" />
+      </div>
+      <div id="title">ㅇㅇ님의 저장 목록</div>
+      <div id="save"></div>
+      {% for like in likeList %}
+      <div>
+        <h4 >{{ like.placename }}</h4>
+        <h4 >{{ like.region }}</h4>
+        <h4 >{{ like.tag }}</h4>
+        <h4 >{{ like.content }}</h4>
+        <h4 >{{ like.tip }}</h4>
+        <img alt="" src="{{ like.image.url }}">
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>

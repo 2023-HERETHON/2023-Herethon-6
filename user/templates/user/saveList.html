@@ -1,30 +1,62 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>저장 목록 페이지</title>
+    <link rel="stylesheet" href="{% static '/css/saveList.css'%}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div id="container">
-      <div id="saveList">
-        <img src="/images/heart.png" alt="찜목록" />
+      <div id="logo" onclick="location.href='http://127.0.0.1:8000/user/main2/'">
+        <img src="{% static '/images/logo.png'%}" alt="로고" width="50px" ; />
       </div>
-      <div id="myPage">
-        <img src="/images/person.png" alt="마이페이지" />
+      <div id="saveList" onclick="location.href='http://127.0.0.1:8000/user/{{request.user.pk}}/like/'">
+        <img
+          src="{% static '/images/heart.png'%}"
+          alt="찜목록"
+          width="22.5px"
+          heigth="19.5px"
+        />
       </div>
-      <div id="title">ㅇㅇ님의 저장 목록</div>
-      <div id="save"></div>
-      {% for like in likeList %}
-      <div>
-        <h4 >{{ like.placename }}</h4>
-        <h4 >{{ like.region }}</h4>
-        <h4 >{{ like.tag }}</h4>
-        <h4 >{{ like.content }}</h4>
-        <h4 >{{ like.tip }}</h4>
-        <img alt="" src="{{ like.image.url }}">
+      <div id="myPage" onclick="location.href='http://127.0.0.1:8000/user/{{request.user.pk}}/review/'">
+        <img
+          src="{% static '/images/person.png'%}"
+          alt="마이페이지"
+          width="20.5px"
+          heigth="22.5px"
+        />
       </div>
-      {% endfor %}
+
+      <div id="title"> {{ user.username }} 님의 저장 목록</div>
+      <div id="saveArea">
+<!--      <form action="{% url 'user:user-consulting' %}" method="POST">{% csrf_token %}-->
+<!--        <button id="startBtn" type="submit">효도 컨설팅 시작!</button>-->
+<!--      </form>-->
+        {% for like in likeList %}
+<!--        <div class="saveBox" onclick="location.href='http://127.0.0.1:8000/posts/1/'">-->
+         <div class="saveBox" onclick="location.href='http://127.0.0.1:8000/posts/{{ like.id }}/'">
+          <h4 class="placeName" >{{ like.placename }}</h4>
+          <img class="photo" alt="" src="{{ like.image.url }}">
+          <h4 class="region">{{ like.region }},</h4>
+            <h4 class="tag">
+              {% for tag in like.tags.all %}
+                {{ tag.name }},
+              {% endfor %}
+            </h4>
+          <h4 class="sort">{{ like.categories }}</h4>
+
+  <!--        <h4 >{{ like.content }}</h4>-->
+  <!--        <h4 >{{ like.tip }}</h4>-->
+        </div>
+        {% endfor %}
+      </div>
     </div>
+
   </body>
 </html>
