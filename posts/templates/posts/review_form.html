@@ -4,10 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Review Input</title>
+    <link rel="stylesheet" href="{% static '/css/review_form.css'%}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
 </head>
 <body>
-    <h1>Review 입력 화면</h1>
-    <form action="" method="POST">
+<div id="container">
+    <div id="logo">
+        <img src="{% static '/images/logo.png' %}" alt="로고" width="50px" ; />
+      </div>
+      <div id="saveList">
+        <img
+          src="{% static '/images/heart.png' %}"
+          alt="찜목록"
+          width="22.5px"
+          heigth="19.5px"
+        />
+      </div>
+      <div id="myPage" onclick="goMyPage()">
+        <img
+          src="{% static '/images/person.png' %}"
+          alt="마이페이지"
+          width="20.5px"
+          heigth="22.5px"
+        />
+      </div>
+    <div id="title">리뷰 작성하기</div>
+    <form id="reviewArea" action="" method="POST">
         {% csrf_token %}
         <div>
 <!--            <div class="rating">-->
@@ -23,29 +48,40 @@
 <!--                <input type="radio" id="star1-{{ like.id }}" name="rating{{ like.id }}" value="1" />-->
 <!--                <label for="star1-{{ like.id }}"></label>-->
 <!--              </div>-->
-             <div class="rating">
+<!--             <div class="rating">-->
+<!--                <label for="id_rating" id="starInput">별점을 입력해주세요.</label>-->
+<!--                <select name="rating" id="id_rating">-->
+<!--                    <option >선택 ⭐</option>-->
+<!--                    <option value="5">⭐⭐⭐⭐⭐</option>-->
+<!--                    <option value="4">⭐⭐⭐⭐</option>-->
+<!--                    <option value="3">⭐⭐⭐</option>-->
+<!--                    <option value="2">⭐⭐</option>-->
+<!--                    <option value="1">⭐</option>-->
+<!--                </select>-->
+<!--            </div>-->
+            <div class="rating">
                 <label for="id_rating">별점</label>
                 <select name="rating" id="id_rating">
-                    <option value="5">5.0</option>
-                    <option value="4">4.0</option>
-                    <option value="3">3.0</option>
-                    <option value="2">2.0</option>
-                    <option value="1">1.0</option>
+                    <option value="⭐⭐⭐⭐⭐⭐" {% if review and review.rating == "⭐⭐⭐⭐⭐⭐" %}selected{% endif %}>⭐⭐⭐⭐⭐⭐</option>
+                    <option value="⭐⭐⭐⭐" {% if review and review.rating == "⭐⭐⭐⭐" %}selected{% endif %}>⭐⭐⭐⭐</option>
+                    <option value="⭐⭐⭐" {% if review and review.rating == "⭐⭐⭐" %}selected{% endif %}>⭐⭐⭐</option>
+                    <option value="⭐⭐" {% if review and review.rating == "⭐⭐" %}selected{% endif %}>⭐⭐</option>
+                    <option value="⭐" {% if review and review.rating == "⭐" %}selected{% endif %}>⭐</option>
                 </select>
-
             </div>
 
-            <label for="id_reviewTitle">제목</label>
-            <textarea name="reviewTitle" id="id_reviewTitle" cols="5" rows="5">{{ review.reviewTitle }}</textarea>
+            <label for="id_reviewTitle" id="reviewTitle">리뷰 제목</label>
+            <textarea name="reviewTitle" id="id_reviewTitle" cols="5" rows="5" placeholder="리뷰 제목을 입력해주세요.">{{ review.reviewTitle }}</textarea>
         </div>
         <div>
-            <label for="id_reviewText">내용</label>
-            <textarea name="reviewText" id="id_reviewText" cols="30" rows="10">{% if review %}{{ review.reviewText }}{% endif %}</textarea>
+            <label for="id_reviewText" id="reviewText">리뷰 내용</label>
+            <textarea name="reviewText" id="id_reviewText" cols="30" rows="10" placeholder="부모님과 함께한 시간은 어땠나요?       꿀팁이 있다면 알려주세요.">{% if review %}{{ review.reviewText }}{% endif %}</textarea>
         </div>
         <div>
-            <button type="submit">저장하기</button>
+            <button type="submit" id="saveReview">리뷰 작성 완료</button>
         </div>
     </form>
+</div>
 </body>
 </html>
 

@@ -24,7 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', include('user.urls')),
     #path('main2', main2, name='main2'),
-    path('main1', main1, name='main1'),
+    #path('main1', main1, name='main1'),
+    path('', main1, name='main1'), #바로 로그인 화면으로 이동
     path('posts/', include('posts.urls')),
     path('review/', include('review.urls')),
 ]
